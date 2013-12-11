@@ -1,76 +1,89 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,a4paper]{report}
 
 \author{William Jones - 635773}
 
 \usepackage{graphicx}
-\usepackage{amssymb}
+\usepackage[driverfallback=hypertex]{hyperref}
+
+\usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{latexsym}
+
+\DeclareMathOperator{\power}{\mathcal{P}}
 
 \begin{document}
 
 \title{Understanding how to attack DES via SAT}
 \maketitle
-\thispagestyle{empty}
-\setcounter{page}{1}
-\newpage
 \tableofcontents
-\clearpage
+
+\chapter{Introduction}
+\label{cha:Introduction}
+
+
+\chapter{Preliminaries}
+\label{cha:prelim}
+
+
+\section{Sets}
+\label{sec:sets}
+
+A set is a collection of objects. To show that an object $x$ is in the set $X$ we write it is as $x \in X$. Sets can be elements of other sets which are referred to as subsets. To show that all subsets of a set $X$ we write it as $\power(X)$. Two sets are equivalent if they have the same exact elements in both of the sets. It should be noted that although the two sets have the same elements, the sets themselves can mean different things. Set $X$ is in set $Y$ if all elements of $X$ are an element of $Y$.
+Therefore we can say for the sets $X$ and $Y$:
+\begin{center}
+  $X=Y$ if and only if $X \subseteq Y$ and $X \subseteq Y$.
+\end{center}
+A set can have nothing within inside it (no elements) which is referred as the empty set. The empty set is denoted as the symbol $\emptyset$ or $\{\}$. There are four operations that can be applied to sets that can produce new sets.  
+
+\subsection{The four basic operations}
+\label{sec:fourbasop}
+
+The \textbf{intersection} operation is taking two sets and finding the element that is in both set $X$ and $Y$, $X \cap Y$. Therefore intersection is:
+\begin{displaymath}
+  X \cap Y = \{x : x \in X  \text{ and } x \in Y\}.
+\end{displaymath}
+
+The \textbf{union} operation of two sets is finding an element that is in either both of the two sets or belongs in the set $X$ or $Y$, $X \cup Y$. Therefore the union of sets $X$ and $Y$ is:
+\begin{displaymath}
+  X \cup Y = \{x : x \in X  \text{ or } x \in Y\}.
+\end{displaymath}
+
+The \textbf{difference} operation is finding an element that is in set $X$ but not $Y$, $X \setminus Y$. Therefore the difference of sets $X$ and $Y$ is:
+\begin{displaymath}
+  X \setminus Y = \{x : x \in X  \text{ and } x \notin Y\}.
+\end{displaymath}
+
+The sets we have been talking so far up to this point have elements within them that are not dependant on the order they are in. For example the set $\{x,y\}$ is the same as the set $\{y, x\}$ as they both have the same elements. However we can have ordered sets were the position of a element within the set is important and makes the set unique. To define a set that is ordered we use ``$()$'' , i.e., $(x,y)$. 
+The (Cartesian) \textbf{product} of sets $X, Y$ is
+\begin{displaymath}
+  X \times Y = \{(x,y) : x \in X \text{ and } y \in Y\}.
+\end{displaymath}
+A \emph{relation} is a subset of the product of sets, which is written as $R \subseteq X \times Y$. A \emph{function} relates an input to an output. Functions are denoted by a small ``$f$'' followed by its input. A simple example of this would be $f(x) = x^2$. When $x=4$, $f(x) = 16$.
+
 
 
 \section{SAT}
+\label{sec:SAT}
+
 What is SAT? (brief introduction to the topic(defining definitions and how to build a framework to solve a SAT problem)only to be completed when the main body is finished).
-\newline
-
-\subsection{Sets}
-A set is a collection of objects. To show that an object \textit{x} is in the set \textit{X} we write it is as $\textit{x} \in \textit{X}$. Sets can be elements of other sets which are referred to as subsets. To show that all subsets of a set \textit{X} we write it as $\mathcal{P}(\textit{X})$. 
-\newline
-
-\noindent Two sets are equivalent if they have the same exact elements in both of the sets. It should be noted that although the two sets have the same elements, the sets themselves can mean different things. Set \textit{X} is in set \textit{Y} if all elements of \textit{X} are an element of \textit{Y}.\\
-Therefore we can say for the sets \textit{X} and \textit{Y}:
-
-\begin{center}
-{\textit{X} = \textit{Y} if and only if \textit{Y} $\subseteq$ \textit{X} and \textit{X} $\subseteq$ \textit{Y}}
-\end{center}
-
-\noindent A set can have nothing within inside it (no elements) which is referred as the empty set. The empty set is denoted as the symbol $\emptyset$ or \{\}.
-\newline
-
-\noindent There are four operations that can be applied to sets that can produce new sets. \newline \newline
-
-\textbf{Intersection} 
-
-\indent The Intersection operation is taking two sets and finding the element that is in both set \textit{X} and \textit{Y}, \textit{X} $\cap$ \textit{Y}. Therefore intersection is: \{\textit{x} : \textit{x} $\in$ \textit{Y} and \textit{x} $\in$ \textit{X}\}. \newline
-
-\textbf{Union}
-
-\indent The Union operation of two sets is finding an element that is in either both of the two sets or belongs in the set \textit{X} or \textit{Y}, \textit{X} $\cup$ \textit{Y}. Therefore the Union of sets \textit{X} and \textit{Y} is: \{\textit{x} : \textit{x} $\in$ \textit{Y} or \textit{x} $\in$ \textit{X}\}. \newline
-
-\textbf{Difference}
-
-\indent The difference operation is finding an element that is in set \textit{X} but not \textit{Y}, \textit{X} / \textit{Y}. Therefore the difference of sets \textit{X} and \textit{Y} is: \{\textit{x} : \textit{x} $\in$ \textit{Y} and \textit{x} $\not \in$ \textit{X}\}.
-
-The sets we have been talking so far up to this point have elements within them that are not dependant on the order they are in. For example the set \{\textit{x}, \textit{y}\} is the same as the set \{\textit{y}, \textit{x}\} as they both have the same elements. However we can have ordered sets were the position of a element within the set is important and makes the set unique. To define a set that is ordered we use $<> $ , i.e., $<$\textit{x, y}$>$. \newline
-The Cartesian product of set \textit{X} and \textit{Y} is \{$<$\textit{x,y}$>$ : \textit{x} $\in$ \textit{X} and \textit{y} $\in$ \textit{Y}\}, so that \textit{X} $\times$ \textit{Y}.\newline
-A relation is a subset of the Cartesian product of sets which is written as \textit{R} $\subseteq$ \textit{X} $\times$ \textit{X} [1].\\
-
-A function relates an input to a output. Functions are denoted by a small "f" followed by its input. A simple example of this would be f(\textit{x}) = \textit{x}$^2$. When \textit{x} is 4, f(4) = {16}.
 
 
 
-\newpage
+
 \subsection{Syntax and semantics for propositional logic}
+
 A propositional variable is the starting point of propositional logic and is a alphabetic symbol that represents a object or number which is subject to change or is not known. We will refer to a set of variables as \textit{\textbf{VA}}. Let \textit{a} stand for all variables, \textit{a} $\in$ \textit{\textbf{VA}}.\\
-The symbol $\top$ will be used to show that a formula is always true and $\bot$ for when a formula is always false. The symbol $\neg$ will be used to show the negation of an object. The binary symbols $\land$ (conjunction), $\lor$ (disjunction), $\Rightarrow$ (implies) and $\equiv$ (equivalence) will be used throughout this paper and are known as \textit{functors}[1].  \\
-\noindent A propositional formula is defined as a set of strings over the set \textit{Var} such that \{\textit{Form} : \textit{a}, $\neg$, $\top$, $\bot$, $\land$, $\lor$, $\Rightarrow$, $\equiv$ $\in$ \textit{Form}\}. \\
+The symbol $\top$ will be used to show that a formula is always true and $\bot$ for when a formula is always false. The symbol $\neg$ will be used to show the negation of an object. The binary symbols $\land$ (conjunction), $\lor$ (disjunction), $\Rightarrow$ (implies) and $\equiv$ (equivalence) will be used throughout this paper and are known as \textit{functors} (see \cite{Marek2009Introduction}). A propositional formula is defined as a set of strings over the set \textit{Var} such that \{\textit{Form} : \textit{a}, $\neg$, $\top$, $\bot$, $\land$, $\lor$, $\Rightarrow$, $\equiv$ $\in$ \textit{Form}\}. \\
 
 
 A literal is a variable that is either positive or negative (denoted by the negation symbol) which will be referred to as \textbf{\textit{LIT}} =  \textit{\textbf{VA}} $\cup$ \{ \textit{$\bar{v}$} : \textit{v} $\in$ \textbf{\textit{VA}}\}, for a set of literals.\\
 
 A clause is a formula in the form \textit{l$_1$} $\lor$ ... $\lor$ \textit{l$_k$}, where each \textit{l$_j$}, 1 $\le$ \textit{j} $\le$ \textit{k} is a \textit{literal} [1]. We will refer to a set of clauses as \textbf{\textit{CL}} := \{C $\subseteq$ \textbf{\textit{LIT}} C $\cap$ $\bar{C}$ = $\emptyset$\}. A set of clause-set's contains \textbf{\textit{CL}} which we will refer as \textbf{\textit{CLS}} := \{\textit{F} $\subseteq$ \textit{\textbf{CL}}\}  
-\newline
+
 
 \textbf{Boolean logic}\\
-Boolean logic is referred to as two valued logic as two values are used to determine if something is true of false. True is represented as 1 and false is 0. The structre of Boolean logic is
+Boolean logic is referred to as two valued logic as two values are used to determine if something is true of false. True is represented as 1 and false is 0. The structure of Boolean logic is
 \begin{center}
 \textit{Bool} = $<$\{0,1\}, $\lor$, $\land$, $\neg$, $\Rightarrow$, $\equiv$, 0, 1$>$
 \end{center}
@@ -79,7 +92,7 @@ Boolean logic is referred to as two valued logic as two values are used to deter
 \indent A partial assignment (\textbf{\textit{PASS}}) creates a mathematical object which can be instantiated by applying an instance of it to a clause set. Within the partial assignment there will be some undefinable variables. \textbf{\textit{PASS}} is the set of all partial assignments. 
 A total assignment (\textbf{\textit{TASS}}) is an assignment to all literals such that \{\textit{$\varphi$} $\in$ \textbf{\textit{TASS}} : \textit{$\varphi$} $\in$ Var $\land$ \textit{$\varphi$} $\in$ \{0,1\}\}. The task is to define $\varphi$ $\times$ F for partial assignment $\varphi$ and clause set F. It should be noted that if a partial assignment has a mapping such that all variables have a assigned value \textit{$\varphi$} $\in$
 \{0,1\}, then \textbf{\textit{PASS}} = \textbf{\textit{TASS}}. 
-The relation of a partial assignment and a \textbf{\textit{CSL}} can be denoted as: \newline
+The relation of a partial assignment and a \textbf{\textit{CSL}} can be denoted as: 
  
 \begin{center}
 $\ast$ : \textbf{\textit{PASS}} $\times$ \textbf{\textit{CSL}} $\rightarrow$ \textbf{\textit{CSL}}
@@ -89,10 +102,10 @@ This will give us $\top$:= $\emptyset$, so now we can have $\top$ $\in$ \textbf{
 \begin{center}
 $\varphi$ $\ast$ \textit{F} = $\top$
 \end{center}
-$\varphi$ is a satisfying assignment for F if $\varphi$ $\ast$ = $\top$. A clause set is satisfiable if there exists a partial assignment $\varphi$ which satisfies F, i.e., $\varphi$ $\ast$ = $\top$. \newline
+$\varphi$ is a satisfying assignment for F if $\varphi$ $\ast$ = $\top$. A clause set is satisfiable if there exists a partial assignment $\varphi$ which satisfies F, i.e., $\varphi$ $\ast$ = $\top$. 
 
-\textbf{Example of \textbf{\textit{PASS}}}\newline
-$<>$ $\in$ \textbf{\textit{PASS}} is an example of the empty partial assignment.\newline
+\textbf{Example of \textbf{\textit{PASS}}}
+$<>$ $\in$ \textbf{\textit{PASS}} is an example of the empty partial assignment.
 $<$\textit{v} $\rightarrow$ $\epsilon$$>$ where \textit{v} $\in$ \textit{Var} $\land$ \textit{v} $\in$ \{0,1\}. \textit{v} is assigned to $\epsilon$ which is within the \textbf{\textit{PASS}} where \textit{v} is also found as a member in the \textit{Var} and is either 0 or 1. 
 
 \begin{center}
@@ -102,7 +115,6 @@ $<$\textit{v} $\rightarrow$ $\epsilon$$>$ where \textit{v} $\in$ \textit{Var} $\
 \end{center}
 \textit{A} $\lor$ 0 $\rightarrow$ 0 holds as 0 is nothing. \textit{A} $\lor$ 1 $\rightarrow$ 1 is dependant on 1 and therefore does not matter what \textit{A} is.
 
-\newpage
 \section{Conjunctive Normal Form}
 Conjunctive normal form (CNF) is a formula that uses Boolean logic, which is a conjunction of disjunctive literals. In other words, CNF uses the functors $\land$ to connect clauses and $\lor$ to connect literals. \\
 To create a CNF we must start with the building blocks which are made up of variables. The set of Var which we will call \textit{a} is a set of variables where $\mathbb{N}$ $\subseteq$ \textit{Var}. As a result this will mean that we cannot get the number 0 in our variables.\\
@@ -157,13 +169,13 @@ The associative law declares that it does not matter how many variables are grou
 \end{center}
 
 \textbf{Idempotents law}\\
-Idempotents law states that a clause with the same variables is equivelant to the variable. For example:
+Idempotents law states that a clause with the same variables is equivalent to the variable. For example:
 
 \begin{center}
 (\textit{A} $\lor$ \textit{A}) $\Leftrightarrow$ \textit{A}
 \end{center}
 
-To represent a CNF in a set clause, each clause from the CNF is seperated and we look at the set by itelf out of context of the other clauses so that, \{\textbf{\textit{CL}} $\in$ \textbf{\textit{CNF}}\}. Each set will remove all duplications of the literal due to the rules of simplification. An example of this would be if we take a given CNF and transform it into a \textbf{\textit{CLS}}: 
+To represent a CNF in a set clause, each clause from the CNF is separated and we look at the set by itself out of context of the other clauses so that, \{\textbf{\textit{CL}} $\in$ \textbf{\textit{CNF}}\}. Each set will remove all duplications of the literal due to the rules of simplification. An example of this would be if we take a given CNF and transform it into a \textbf{\textit{CLS}}: 
 
 \begin{center}
 \textit{G}:= (\textit{A} $\lor$ \textit{B} $\lor$ \textit{B}) $\land$ (\textit{C} $\lor$ \textit{D} $\lor$ $\neg$\textit{D})
@@ -194,7 +206,7 @@ As a result we have produced a new CNF. By using this method we prove a formulas
 \item $\varphi$(\textit{c}):= 0
 \end{enumerate}
 
-The first line notes what the formula function \textit{f} is. The second line shows that $\varphi$ maps a variable through total assignment. \textit{Var}(\textit{f}) is the set of objcts to be assigned a value. Lines 4-6 show the $\varphi$ mapping of the variables \textit{a} $\rightarrow$ 1, \textit{b} $\rightarrow$ 1, \textit{c} $\rightarrow$ 0. These values are arbitary and are chosen at random. \\
+The first line notes what the formula function \textit{f} is. The second line shows that $\varphi$ maps a variable through total assignment. \textit{Var}(\textit{f}) is the set of objects to be assigned a value. Lines 4-6 show the $\varphi$ mapping of the variables \textit{a} $\rightarrow$ 1, \textit{b} $\rightarrow$ 1, \textit{c} $\rightarrow$ 0. These values are arbitrary and are chosen at random. \\
 The \textit{TASS} of \textit{f} is therefore:
 
 \begin{center}
@@ -203,7 +215,11 @@ eval ($\varphi$, \textit{f}) $\in$ \{0,1\}
 If the eval is true then it is satisfiable. However if the eval is false then it is unclassifiable. 
 
 
-\newpage
-\section{computing DES through SAT}
-\section{References}
+\chapter{Computing DES through SAT}
+\label{cha:dessat}
+
+\bibliographystyle{plain}
+
+\bibliography{Bibliography}
+
 \end{document}}
