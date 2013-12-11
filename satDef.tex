@@ -22,7 +22,8 @@ What is SAT? (brief introduction to the topic(defining definitions and how to bu
 \newline
 
 \subsection{Sets}
-A set is a collection of objects. To show that an object \textit{x} is in the set \textit{X} we write it is as $\textit{x} \in \textit{X}$. Sets can be elements of other sets which are referred to as subsets. To show that all subsets of a set \textit{X} we write it as $\mathcal{P}(\textit{X})$. \newline
+A set is a collection of objects. To show that an object \textit{x} is in the set \textit{X} we write it is as $\textit{x} \in \textit{X}$. Sets can be elements of other sets which are referred to as subsets. To show that all subsets of a set \textit{X} we write it as $\mathcal{P}(\textit{X})$. 
+\newline
 
 \noindent Two sets are equivalent if they have the same exact elements in both of the sets. It should be noted that although the two sets have the same elements, the sets themselves can mean different things. Set \textit{X} is in set \textit{Y} if all elements of \textit{X} are an element of \textit{Y}.\\
 Therefore we can say for the sets \textit{X} and \textit{Y}:
@@ -31,9 +32,11 @@ Therefore we can say for the sets \textit{X} and \textit{Y}:
 {\textit{X} = \textit{Y} if and only if \textit{Y} $\subseteq$ \textit{X} and \textit{X} $\subseteq$ \textit{Y}}
 \end{center}
 
-\noindent A set can have nothing within inside it (no elements) which is referred as the empty set. The empty set is denoted as the symbol $\emptyset$ or \{\}.\newline
+\noindent A set can have nothing within inside it (no elements) which is referred as the empty set. The empty set is denoted as the symbol $\emptyset$ or \{\}.
+\newline
 
 \noindent There are four operations that can be applied to sets that can produce new sets. \newline \newline
+
 \textbf{Intersection} 
 
 \indent The Intersection operation is taking two sets and finding the element that is in both set \textit{X} and \textit{Y}, \textit{X} $\cap$ \textit{Y}. Therefore intersection is: \{\textit{x} : \textit{x} $\in$ \textit{Y} and \textit{x} $\in$ \textit{X}\}. \newline
@@ -77,6 +80,7 @@ Boolean logic is referred to as two valued logic as two values are used to deter
 A total assignment (\textbf{\textit{TASS}}) is an assignment to all literals such that \{\textit{$\varphi$} $\in$ \textbf{\textit{TASS}} : \textit{$\varphi$} $\in$ Var $\land$ \textit{$\varphi$} $\in$ \{0,1\}\}. The task is to define $\varphi$ $\times$ F for partial assignment $\varphi$ and clause set F. It should be noted that if a partial assignment has a mapping such that all variables have a assigned value \textit{$\varphi$} $\in$
 \{0,1\}, then \textbf{\textit{PASS}} = \textbf{\textit{TASS}}. 
 The relation of a partial assignment and a \textbf{\textit{CSL}} can be denoted as: \newline
+ 
 \begin{center}
 $\ast$ : \textbf{\textit{PASS}} $\times$ \textbf{\textit{CSL}} $\rightarrow$ \textbf{\textit{CSL}}
 \end{center}
@@ -96,10 +100,9 @@ $<$\textit{v} $\rightarrow$ $\epsilon$$>$ where \textit{v} $\in$ \textit{Var} $\
 \textit{A} $\lor$ 1 $\rightarrow$ 1 \\
 \textit{A} $\lor$ 2 $\rightarrow$ 2
 \end{center}
-\textit{A} $\lor$ $\rightarrow$ 0 holds as 0 is nothing. \textit{A} $\lor$ 1 $\rightarrow$ 1 is dependant on 1 and therefore does not matter what \textit{A} is.
+\textit{A} $\lor$ 0 $\rightarrow$ 0 holds as 0 is nothing. \textit{A} $\lor$ 1 $\rightarrow$ 1 is dependant on 1 and therefore does not matter what \textit{A} is.
 
 \newpage
-
 \section{Conjunctive Normal Form}
 Conjunctive normal form (CNF) is a formula that uses Boolean logic, which is a conjunction of disjunctive literals. In other words, CNF uses the functors $\land$ to connect clauses and $\lor$ to connect literals. \\
 To create a CNF we must start with the building blocks which are made up of variables. The set of Var which we will call \textit{a} is a set of variables where $\mathbb{N}$ $\subseteq$ \textit{Var}. As a result this will mean that we cannot get the number 0 in our variables.\\
@@ -197,7 +200,7 @@ The \textit{TASS} of \textit{f} is therefore:
 \begin{center}
 eval ($\varphi$, \textit{f}) $\in$ \{0,1\}
 \end{center}
-If the eval is true then it is satisfiable. However if the eval is - then it is unclassifiable. 
+If the eval is true then it is satisfiable. However if the eval is false then it is unclassifiable. 
 
 
 \newpage
