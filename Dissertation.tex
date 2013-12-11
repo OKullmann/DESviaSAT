@@ -83,7 +83,7 @@ A clause is a formula in the form \textit{l$_1$} $\lor$ ... $\lor$ \textit{l$_k$
 
 
 \textbf{Boolean logic}\\
-Boolean logic is referred to as two valued logic as two values are used to determine if something is true of false. True is represented as 1 and false is 0. The structre of Boolean logic is
+Boolean logic is referred to as two valued logic as two values are used to determine if something is true of false. True is represented as 1 and false is 0. The structure of Boolean logic is
 \begin{center}
 \textit{Bool} = $<$\{0,1\}, $\lor$, $\land$, $\neg$, $\Rightarrow$, $\equiv$, 0, 1$>$
 \end{center}
@@ -169,13 +169,13 @@ The associative law declares that it does not matter how many variables are grou
 \end{center}
 
 \textbf{Idempotents law}\\
-Idempotents law states that a clause with the same variables is equivelant to the variable. For example:
+Idempotents law states that a clause with the same variables is equivalent to the variable. For example:
 
 \begin{center}
 (\textit{A} $\lor$ \textit{A}) $\Leftrightarrow$ \textit{A}
 \end{center}
 
-To represent a CNF in a set clause, each clause from the CNF is seperated and we look at the set by itelf out of context of the other clauses so that, \{\textbf{\textit{CL}} $\in$ \textbf{\textit{CNF}}\}. Each set will remove all duplications of the literal due to the rules of simplification. An example of this would be if we take a given CNF and transform it into a \textbf{\textit{CLS}}: 
+To represent a CNF in a set clause, each clause from the CNF is separated and we look at the set by itself out of context of the other clauses so that, \{\textbf{\textit{CL}} $\in$ \textbf{\textit{CNF}}\}. Each set will remove all duplications of the literal due to the rules of simplification. An example of this would be if we take a given CNF and transform it into a \textbf{\textit{CLS}}: 
 
 \begin{center}
 \textit{G}:= (\textit{A} $\lor$ \textit{B} $\lor$ \textit{B}) $\land$ (\textit{C} $\lor$ \textit{D} $\lor$ $\neg$\textit{D})
@@ -206,7 +206,7 @@ As a result we have produced a new CNF. By using this method we prove a formulas
 \item $\varphi$(\textit{c}):= 0
 \end{enumerate}
 
-The first line notes what the formula function \textit{f} is. The second line shows that $\varphi$ maps a variable through total assignment. \textit{Var}(\textit{f}) is the set of objcts to be assigned a value. Lines 4-6 show the $\varphi$ mapping of the variables \textit{a} $\rightarrow$ 1, \textit{b} $\rightarrow$ 1, \textit{c} $\rightarrow$ 0. These values are arbitary and are chosen at random. \\
+The first line notes what the formula function \textit{f} is. The second line shows that $\varphi$ maps a variable through total assignment. \textit{Var}(\textit{f}) is the set of objects to be assigned a value. Lines 4-6 show the $\varphi$ mapping of the variables \textit{a} $\rightarrow$ 1, \textit{b} $\rightarrow$ 1, \textit{c} $\rightarrow$ 0. These values are arbitrary and are chosen at random. \\
 The \textit{TASS} of \textit{f} is therefore:
 
 \begin{center}
