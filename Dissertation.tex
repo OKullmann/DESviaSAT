@@ -3,8 +3,13 @@
 \author{William Jones - 635773}
 
 \usepackage{graphicx}
-\usepackage{amssymb}
+
+\usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{latexsym}
+
+\DeclareMathOperator{\power}{\mathcal{P}}
 
 \begin{document}
 
@@ -23,38 +28,37 @@
 \section{Sets}
 \label{sec:sets}
 
-A set is a collection of objects. To show that an object \textit{x} is in the set \textit{X} we write it is as $\textit{x} \in \textit{X}$. Sets can be elements of other sets which are referred to as subsets. To show that all subsets of a set \textit{X} we write it as $\mathcal{P}(\textit{X})$. 
-
-
-\noindent Two sets are equivalent if they have the same exact elements in both of the sets. It should be noted that although the two sets have the same elements, the sets themselves can mean different things. Set \textit{X} is in set \textit{Y} if all elements of \textit{X} are an element of \textit{Y}.\\
-Therefore we can say for the sets \textit{X} and \textit{Y}:
-
+A set is a collection of objects. To show that an object $x$ is in the set $X$ we write it is as $x \in X$. Sets can be elements of other sets which are referred to as subsets. To show that all subsets of a set $X$ we write it as $\power(X)$. Two sets are equivalent if they have the same exact elements in both of the sets. It should be noted that although the two sets have the same elements, the sets themselves can mean different things. Set $X$ is in set $Y$ if all elements of $X$ are an element of $Y$.
+Therefore we can say for the sets $X$ and $Y$:
 \begin{center}
-{\textit{X} = \textit{Y} if and only if \textit{Y} $\subseteq$ \textit{X} and \textit{X} $\subseteq$ \textit{Y}}
+  $X=Y$ if and only if $X \subseteq Y$ and $X \subseteq Y$.
 \end{center}
+A set can have nothing within inside it (no elements) which is referred as the empty set. The empty set is denoted as the symbol $\emptyset$ or $\{\}$. There are four operations that can be applied to sets that can produce new sets.  
 
-\noindent A set can have nothing within inside it (no elements) which is referred as the empty set. The empty set is denoted as the symbol $\emptyset$ or \{\}.
+\subsection{The four basic operations}
+\label{sec:fourbasop}
 
+The \textbf{intersection} operation is taking two sets and finding the element that is in both set $X$ and $Y$, $X \cap Y$. Therefore intersection is:
+\begin{displaymath}
+  X \cap Y = \{x : x \in X  \text{ and } x \in Y\}.
+\end{displaymath}
 
-\noindent There are four operations that can be applied to sets that can produce new sets.  
+The \textbf{union} operation of two sets is finding an element that is in either both of the two sets or belongs in the set $X$ or $Y$, $X \cup Y$. Therefore the union of sets $X$ and $Y$ is:
+\begin{displaymath}
+  X \cup Y = \{x : x \in X  \text{ or } x \in Y\}.
+\end{displaymath}
 
-\textbf{Intersection} 
+The \textbf{difference} operation is finding an element that is in set $X$ but not $Y$, $X \setminus Y$. Therefore the difference of sets $X$ and $Y$ is:
+\begin{displaymath}
+  X \setminus Y = \{x : x \in X  \text{ and } x \notin Y\}.
+\end{displaymath}
 
-\indent The Intersection operation is taking two sets and finding the element that is in both set \textit{X} and \textit{Y}, \textit{X} $\cap$ \textit{Y}. Therefore intersection is: \{\textit{x} : \textit{x} $\in$ \textit{Y} and \textit{x} $\in$ \textit{X}\}. 
-
-\textbf{Union}
-
-\indent The Union operation of two sets is finding an element that is in either both of the two sets or belongs in the set \textit{X} or \textit{Y}, \textit{X} $\cup$ \textit{Y}. Therefore the Union of sets \textit{X} and \textit{Y} is: \{\textit{x} : \textit{x} $\in$ \textit{Y} or \textit{x} $\in$ \textit{X}\}. 
-
-\textbf{Difference}
-
-\indent The difference operation is finding an element that is in set \textit{X} but not \textit{Y}, \textit{X} / \textit{Y}. Therefore the difference of sets \textit{X} and \textit{Y} is: \{\textit{x} : \textit{x} $\in$ \textit{Y} and \textit{x} $\not \in$ \textit{X}\}.
-
-The sets we have been talking so far up to this point have elements within them that are not dependant on the order they are in. For example the set \{\textit{x}, \textit{y}\} is the same as the set \{\textit{y}, \textit{x}\} as they both have the same elements. However we can have ordered sets were the position of a element within the set is important and makes the set unique. To define a set that is ordered we use $<> $ , i.e., $<$\textit{x, y}$>$. 
-The Cartesian product of set \textit{X} and \textit{Y} is \{$<$\textit{x,y}$>$ : \textit{x} $\in$ \textit{X} and \textit{y} $\in$ \textit{Y}\}, so that \textit{X} $\times$ \textit{Y}.
-A relation is a subset of the Cartesian product of sets which is written as \textit{R} $\subseteq$ \textit{X} $\times$ \textit{X} [1].\\
-
-A function relates an input to a output. Functions are denoted by a small "f" followed by its input. A simple example of this would be f(\textit{x}) = \textit{x}$^2$. When \textit{x} is 4, f(4) = {16}.
+The sets we have been talking so far up to this point have elements within them that are not dependant on the order they are in. For example the set $\{x,y\}$ is the same as the set $\{y, x\}$ as they both have the same elements. However we can have ordered sets were the position of a element within the set is important and makes the set unique. To define a set that is ordered we use ``$()$'' , i.e., $(x,y)$. 
+The (Cartesian) \textbf{product} of sets $X, Y$ is
+\begin{displaymath}
+  X \times Y = \{(x,y) : x \in X \text{ and } y \in Y\}.
+\end{displaymath}
+A \emph{relation} is a subset of the product of sets, which is written as $R \subseteq X \times Y$. A \emph{function} relates an input to an output. Functions are denoted by a small ``$f$'' followed by its input. A simple example of this would be $f(x) = x^2$. When $x=4$, $f(x) = 16$.
 
 
 
