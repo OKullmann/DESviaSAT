@@ -3,6 +3,7 @@
 \author{William Jones - 635773}
 
 \usepackage{graphicx}
+\usepackage[driverfallback=hypertex]{hyperref}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -71,9 +72,9 @@ What is SAT? (brief introduction to the topic(defining definitions and how to bu
 
 
 \subsection{Syntax and semantics for propositional logic}
+
 A propositional variable is the starting point of propositional logic and is a alphabetic symbol that represents a object or number which is subject to change or is not known. We will refer to a set of variables as \textit{\textbf{VA}}. Let \textit{a} stand for all variables, \textit{a} $\in$ \textit{\textbf{VA}}.\\
-The symbol $\top$ will be used to show that a formula is always true and $\bot$ for when a formula is always false. The symbol $\neg$ will be used to show the negation of an object. The binary symbols $\land$ (conjunction), $\lor$ (disjunction), $\Rightarrow$ (implies) and $\equiv$ (equivalence) will be used throughout this paper and are known as \textit{functors}[1].  \\
-\noindent A propositional formula is defined as a set of strings over the set \textit{Var} such that \{\textit{Form} : \textit{a}, $\neg$, $\top$, $\bot$, $\land$, $\lor$, $\Rightarrow$, $\equiv$ $\in$ \textit{Form}\}. \\
+The symbol $\top$ will be used to show that a formula is always true and $\bot$ for when a formula is always false. The symbol $\neg$ will be used to show the negation of an object. The binary symbols $\land$ (conjunction), $\lor$ (disjunction), $\Rightarrow$ (implies) and $\equiv$ (equivalence) will be used throughout this paper and are known as \textit{functors} (see \cite{Marek2009Introduction}). A propositional formula is defined as a set of strings over the set \textit{Var} such that \{\textit{Form} : \textit{a}, $\neg$, $\top$, $\bot$, $\land$, $\lor$, $\Rightarrow$, $\equiv$ $\in$ \textit{Form}\}. \\
 
 
 A literal is a variable that is either positive or negative (denoted by the negation symbol) which will be referred to as \textbf{\textit{LIT}} =  \textit{\textbf{VA}} $\cup$ \{ \textit{$\bar{v}$} : \textit{v} $\in$ \textbf{\textit{VA}}\}, for a set of literals.\\
@@ -217,5 +218,8 @@ If the eval is true then it is satisfiable. However if the eval is false then it
 \chapter{Computing DES through SAT}
 \label{cha:dessat}
 
+\bibliographystyle{plain}
+
+\bibliography{Bibliography}
 
 \end{document}}
