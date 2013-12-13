@@ -4,7 +4,6 @@
 
 \usepackage{graphicx}
 \usepackage[driverfallback=hypertex]{hyperref}
-
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -29,37 +28,37 @@
 \section{Sets}
 \label{sec:sets}
 
-A set is a collection of objects. To show that an object $x$ is in the set $X$ we write it is as $x \in X$. Sets can be elements of other sets which are referred to as subsets. To show that all subsets of a set $X$ we write it as $\power(X)$. Two sets are equivalent if they have the same exact elements in both of the sets. It should be noted that although the two sets have the same elements, the sets themselves can mean different things. Set $X$ is in set $Y$ if all elements of $X$ are an element of $Y$.
+A set is a collection of objects. To show that an object $x$ is in the set $X$ we use the membership symbol ($\in$) to show that $x$ belongs in something. This will be written as $x \in X$. Sets can be elements of other sets which are referred to as subsets. To show that all subsets of a set $X$ we write it as $\power(X)$. Two sets are equivalent if they have the same exact elements in both of the sets. It should be noted that although the two sets have the same elements, the sets themselves can mean different things. Set $X$ is in set $Y$ if all elements of $X$ are an element of $Y$.
 Therefore we can say for the sets $X$ and $Y$:
 \begin{center}
-  $X=Y$ if and only if $X \subseteq Y$ and $X \subseteq Y$.
+  $X=Y$ if and only if $X \subseteq Y$ and $Y \subseteq X$.
 \end{center}
 A set can have nothing within inside it (no elements) which is referred as the empty set. The empty set is denoted as the symbol $\emptyset$ or $\{\}$. There are four operations that can be applied to sets that can produce new sets.  
 
 \subsection{The four basic operations}
 \label{sec:fourbasop}
 
-The \textbf{intersection} operation is taking two sets and finding the element that is in both set $X$ and $Y$, $X \cap Y$. Therefore intersection is:
+The \emph{intersection} operation takes two sets and finds the element that occur in both set $X$ and set $Y$, $X \cap Y$. Therefore intersection is:
 \begin{displaymath}
   X \cap Y = \{x : x \in X  \text{ and } x \in Y\}.
 \end{displaymath}
 
-The \textbf{union} operation of two sets is finding an element that is in either both of the two sets or belongs in the set $X$ or $Y$, $X \cup Y$. Therefore the union of sets $X$ and $Y$ is:
+The \emph{union} operation takes two sets to find an element that is in either both of the two sets or belongs in the set $X$ or $Y$, $X \cup Y$. Therefore the union of sets $X$ and $Y$ is:
 \begin{displaymath}
   X \cup Y = \{x : x \in X  \text{ or } x \in Y\}.
 \end{displaymath}
 
-The \textbf{difference} operation is finding an element that is in set $X$ but not $Y$, $X \setminus Y$. Therefore the difference of sets $X$ and $Y$ is:
+The \emph{difference} operation finds an element that is in set $X$ but not in set $Y$, $X \setminus Y$. Therefore the difference of sets $X$ and $Y$ is:
 \begin{displaymath}
   X \setminus Y = \{x : x \in X  \text{ and } x \notin Y\}.
 \end{displaymath}
 
-The sets we have been talking so far up to this point have elements within them that are not dependant on the order they are in. For example the set $\{x,y\}$ is the same as the set $\{y, x\}$ as they both have the same elements. However we can have ordered sets were the position of a element within the set is important and makes the set unique. To define a set that is ordered we use ``$()$'' , i.e., $(x,y)$. 
-The (Cartesian) \textbf{product} of sets $X, Y$ is
+The sets we have been talking about up to this point have elements within them that are not dependant on the order they are in. For example the set $\{x,y\}$ is the same as the set $\{y, x\}$ as they both have the same elements. However we can have ordered sets were the position of a element within the set is important and makes the set unique. To define a set that is ordered we use parentheses  ``$()$'' , i.e., $(x,y)$. 
+The (Cartesian) product of sets $X, Y$ is
 \begin{displaymath}
   X \times Y = \{(x,y) : x \in X \text{ and } y \in Y\}.
 \end{displaymath}
-A \emph{relation} is a subset of the product of sets, which is written as $R \subseteq X \times Y$. A \emph{function} relates an input to an output. Functions are denoted by a small ``$f$'' followed by its input. A simple example of this would be $f(x) = x^2$. When $x=4$, $f(x) = 16$.
+A \emph{relation} is a subset of the product of sets, which is written as $R \subseteq X \times Y$. A \emph{function} relates an input to an output. Functions are denoted by a small ``$f$'' followed by its input. A simple example of this would be $f(x) = x^2$. Using the variable x for when $x=4$ the function will therefore be, $f(x) = 16$.
 
 
 
@@ -68,72 +67,95 @@ A \emph{relation} is a subset of the product of sets, which is written as $R \su
 
 What is SAT? (brief introduction to the topic(defining definitions and how to build a framework to solve a SAT problem)only to be completed when the main body is finished).
 
-
-
-
 \subsection{Syntax and semantics for propositional logic}
+\label{sec:syntaxsem}
 
-A propositional variable is the starting point of propositional logic and is a alphabetic symbol that represents a object or number which is subject to change or is not known. We will refer to a set of variables as \textit{\textbf{VA}}. Let \textit{a} stand for all variables, \textit{a} $\in$ \textit{\textbf{VA}}.\\
-The symbol $\top$ will be used to show that a formula is always true and $\bot$ for when a formula is always false. The symbol $\neg$ will be used to show the negation of an object. The binary symbols $\land$ (conjunction), $\lor$ (disjunction), $\Rightarrow$ (implies) and $\equiv$ (equivalence) will be used throughout this paper and are known as \textit{functors} (see \cite{Marek2009Introduction}). A propositional formula is defined as a set of strings over the set \textit{Var} such that \{\textit{Form} : \textit{a}, $\neg$, $\top$, $\bot$, $\land$, $\lor$, $\Rightarrow$, $\equiv$ $\in$ \textit{Form}\}. \\
+A propositional variable is the starting point of propositional logic and is a alphabetic symbol that represents a object or number which is subject to change or is not known. We will refer to a set of variables as \textit{\textbf{VA}}. Let $a$ stand for all variables, $a$ $\in$ \textit{\textbf{VA}}. The symbol $\top$ will be used to show that a formula is always true and $\bot$ for when a formula is always false. The symbol $\neg$ will be used to show the negation of an object. The binary symbols $\land$ (conjunction), $\lor$ (disjunction), $\Rightarrow$ (implies) and $\equiv$ (equivalence) will be used throughout this paper and are known as \textit{functors} (see \cite{Marek2009Introduction}). A propositional formula is defined as a set of strings over the set $Var$ such that \{\textit{Form} : $a, \neg, \top, \bot, \land, \lor, \Rightarrow, \equiv \in Form$\}. A literal is a variable that is either positive or negative (denoted by the negation symbol) which will be referred to as \textbf{\textit{LIT}} =  \textit{\textbf{VA}} $\cup \{ \bar{v} : v \in$ \textbf{\textit{VA}}\}, for a set of literals. A clause is a formula in the form $l_1 \lor$ ... $\lor l_k$, where each $l_j$, 1 $\le$ \textit{j} $\le$ \textit{k} is a \textit{literal} (see\cite{Marek2009Introduction}). We will refer to a set of clauses as \textbf{\textit{CL}} := \{C $\subseteq$ \textbf{\textit{LIT}} C $\cap \bar{C} = \emptyset$\}. A set of clause-set's contains \textbf{\textit{CL}} which we will refer as \textbf{\textit{CLS}} := \{$F \subseteq$ \textit{\textbf{CL}}\}. 
 
+\subsection{Boolean logic}
+\label{sec:bool}
 
-A literal is a variable that is either positive or negative (denoted by the negation symbol) which will be referred to as \textbf{\textit{LIT}} =  \textit{\textbf{VA}} $\cup$ \{ \textit{$\bar{v}$} : \textit{v} $\in$ \textbf{\textit{VA}}\}, for a set of literals.\\
+Boolean logic is referred to as two valued logic. This is because two values are used to determine if something is true of false. \emph{True} is represented as $1$ and \emph{false} is $0$. The structure of Boolean logic is:
+\begin{displaymath}
+\text{Bool} = \langle \lor, \land, \neg, \Rightarrow, \equiv,\{0,1\}, 0, 1 \rangle
+\end{displaymath}
 
-A clause is a formula in the form \textit{l$_1$} $\lor$ ... $\lor$ \textit{l$_k$}, where each \textit{l$_j$}, 1 $\le$ \textit{j} $\le$ \textit{k} is a \textit{literal} [1]. We will refer to a set of clauses as \textbf{\textit{CL}} := \{C $\subseteq$ \textbf{\textit{LIT}} C $\cap$ $\bar{C}$ = $\emptyset$\}. A set of clause-set's contains \textbf{\textit{CL}} which we will refer as \textbf{\textit{CLS}} := \{\textit{F} $\subseteq$ \textit{\textbf{CL}}\}  
-
-
-\textbf{Boolean logic}\\
-Boolean logic is referred to as two valued logic as two values are used to determine if something is true of false. True is represented as 1 and false is 0. The structure of Boolean logic is
+The arguments for the Bool algebra operations can be shown in truth tables. A truth table computes the logical values that are given to their corresponding value over a given operation. An example of this would be the negation of $p$ which would be $\neg p$. 
 \begin{center}
-\textit{Bool} = $<$\{0,1\}, $\lor$, $\land$, $\neg$, $\Rightarrow$, $\equiv$, 0, 1$>$
+\begin{tabular}{|c|c|c|}
+\hline
+$p$ & $\neg p$\\ \hline
+0 & 1 \\
+1 & 0 \\ 
+\hline
+\end{tabular}  
 \end{center}
+\begin{center}
+\emph{Figure 1: negation}
+\end{center}
+As seen in \emph{Figure 1} the $\neg p$ will always have a value that is opposite $p$.
+The logical \emph{functors} each have a unique output if called upon using a set of Bool elements.
+\begin{center}
+\begin{tabular}{|c|c||c|c|c|c|c|}
+\hline
+$p$ & $q$ & $p \land q$ & $p \lor q$ & $p \Rightarrow q$ & $p \equiv q$ & $p \oplus q$		\\ \hline
+1 & 1 & 1 & 1 & 1 & 1 & 0\\
+1 & 0 & 0 & 1 & 0 & 0 & 1\\
+0 & 1 & 0 & 1 & 1 & 0 & 1\\
+0 & 0 & 0 & 0 & 1 & 1 & 0\\
+\hline
+\end{tabular}  
+\end{center}
+\begin{center}
+\emph{Figure 2: Four binary functors}
+\end{center}
+The \emph{Conjunction} functor ($\land$) takes two Bool elements from a set $\{0,1\}$ and will return true if the elements of both elements are $1$. If however either one of the two elements or both are $0$, then the Conjunction of the two elements will return $0$. The \emph{Disjunction} functor $(\lor)$ takes two Bool elements from a set $\{0,1\}$ and will return a true value if both elements are valued as $1$, or either one of the two elements are equal to $1$. If however neither of the two elements are equal to $1$, then the Disjunction will return $0$. The \emph{Implication} functor $(\Rightarrow)$ takes two Bool from a set $\{0,1\}$ and will return true if both elements are equal to $1$, both elements are equal to $0$ or the first element is $0$ and the second element is $1$, as this says that false implies true which is true. However the implication functor will return true if the elements assignments are for the first element $1$ and the second is $0$, as this implies that truth implies false which is false. \emph{Equivalence} functor takes two Bool elements from a set $\{0,1\}$ and will return true if the elements assignments are both either $1$ or $0$. However, if one of the two elements is $1$ while the other is $0$, then the equivelance of the two elements will evaluate to $0$. 
 
-\textbf{Partial Assignment and Total Assignment}\\
-\indent A partial assignment (\textbf{\textit{PASS}}) creates a mathematical object which can be instantiated by applying an instance of it to a clause set. Within the partial assignment there will be some undefinable variables. \textbf{\textit{PASS}} is the set of all partial assignments. 
-A total assignment (\textbf{\textit{TASS}}) is an assignment to all literals such that \{\textit{$\varphi$} $\in$ \textbf{\textit{TASS}} : \textit{$\varphi$} $\in$ Var $\land$ \textit{$\varphi$} $\in$ \{0,1\}\}. The task is to define $\varphi$ $\times$ F for partial assignment $\varphi$ and clause set F. It should be noted that if a partial assignment has a mapping such that all variables have a assigned value \textit{$\varphi$} $\in$
-\{0,1\}, then \textbf{\textit{PASS}} = \textbf{\textit{TASS}}. 
+\subsection {Partial Assignment and Total Assignment}
+\label{sec:pata}
+
+A partial assignment (\textbf{\textit{PASS}}) creates a mathematical object which can be instantiated by applying an instance of it to a clause set. Within the partial assignment there will be some undefinable variables. \textbf{\textit{PASS}} is the set of all partial assignments. 
+A total assignment (\textbf{\textit{TASS}}) is an assignment to all literals such that \{$\varphi \in$ \textbf{\textit{TASS}} : $\varphi \in Var \land \varphi \in$ \{$0,1$\}\}. The task is to define $\varphi \times F$ for partial assignment $\varphi$ and clause set $F$. It should be noted that if a partial assignment has a mapping such that all variables have a assigned value $\varphi \in \{0,1$\}, then \textbf{\textit{PASS}} = \textbf{\textit{TASS}}. 
 The relation of a partial assignment and a \textbf{\textit{CSL}} can be denoted as: 
- 
+
 \begin{center}
 $\ast$ : \textbf{\textit{PASS}} $\times$ \textbf{\textit{CSL}} $\rightarrow$ \textbf{\textit{CSL}}
 \end{center}
-This will give us $\top$:= $\emptyset$, so now we can have $\top$ $\in$ \textbf{\textit{CSL}}. Therefore:
+This will give us $\top:= \emptyset, \text{ so now we can have } \top \in$ \textbf{\textit{CSL}}. Therefore:
 
-\begin{center}
-$\varphi$ $\ast$ \textit{F} = $\top$
-\end{center}
-$\varphi$ is a satisfying assignment for F if $\varphi$ $\ast$ = $\top$. A clause set is satisfiable if there exists a partial assignment $\varphi$ which satisfies F, i.e., $\varphi$ $\ast$ = $\top$. 
+\begin{displaymath}
+\varphi \ast F = \top
+\end{displaymath}
+$\varphi$ is a satisfying assignment for F if $\varphi \: \ast = \top$. A clause set is satisfiable if there exists a partial assignment $\varphi$ which satisfies F, i.e., $\varphi \: \ast = \top$. 
 
-\textbf{Example of \textbf{\textit{PASS}}}
-$<>$ $\in$ \textbf{\textit{PASS}} is an example of the empty partial assignment.
-$<$\textit{v} $\rightarrow$ $\epsilon$$>$ where \textit{v} $\in$ \textit{Var} $\land$ \textit{v} $\in$ \{0,1\}. \textit{v} is assigned to $\epsilon$ which is within the \textbf{\textit{PASS}} where \textit{v} is also found as a member in the \textit{Var} and is either 0 or 1. 
+\subsection{Example of \textbf{\textit{PASS}}}
+$<> \in \textbf{\textit{PASS}}$ is an example of the empty partial assignment.
+$< v \rightarrow \epsilon > \text{where} v \in Var \land v \in \{0,1\}$. $v$ is assigned to $\epsilon$ which is within the \textbf{\textit{PASS}} where $v$ is also found as a member in the $Var$ and is either $0$ or $1$. 
 
-\begin{center}
-\textit{A} $\lor$ 0 $\rightarrow$ 0 \\
-\textit{A} $\lor$ 1 $\rightarrow$ 1 \\
-\textit{A} $\lor$ 2 $\rightarrow$ 2
-\end{center}
-\textit{A} $\lor$ 0 $\rightarrow$ 0 holds as 0 is nothing. \textit{A} $\lor$ 1 $\rightarrow$ 1 is dependant on 1 and therefore does not matter what \textit{A} is.
+\begin{displaymath}
+A \lor 0 \rightarrow 0, \: A \lor 1 \rightarrow 1, \: A \lor 2 \rightarrow 2
+\end{displaymath}
+$A \lor 0 \rightarrow 0 \text{ holds as }0 \text {is nothing }$. $A \lor 1 \rightarrow 1$ is dependant on $1$ and therefore does not matter what $A$ is.
 
 \section{Conjunctive Normal Form}
-Conjunctive normal form (CNF) is a formula that uses Boolean logic, which is a conjunction of disjunctive literals. In other words, CNF uses the functors $\land$ to connect clauses and $\lor$ to connect literals. \\
-To create a CNF we must start with the building blocks which are made up of variables. The set of Var which we will call \textit{a} is a set of variables where $\mathbb{N}$ $\subseteq$ \textit{Var}. As a result this will mean that we cannot get the number 0 in our variables.\\
+Conjunctive normal form (CNF) is a formula that uses Boolean logic, which is a conjunction of disjunctive literals. In other words, CNF uses the functors $\land$ to connect clauses and $\lor$ to connect literals.
+To create a CNF we must start with the building blocks which are made up of variables. The set of $Var$ which we will call $a$ is a set of variables where $\mathbb{N} \subseteq Var$. As a result this will mean that we cannot get the number $0$ in our variables.
 An example of a CNF would be:
 
-\begin{center}
-($\neg$\textit{x}$_1$ $\lor$ \textit{x}$_2$) $\land$ ($\neg$\textit{x}$_1$ $\lor$ \textit{x}$_2$ $\lor$ $\neg$\textit{x}$_3$)
-\end{center}
-The CNF formula is satasfiable if we choose $\neg$\textit{x}$_1$ = TRUE, \textit{x}$_2$ = FALSE, $\neg$\textit{x}$_3$ = FALSE as our assignments. This as a result would prduce a CNF that is: 
+\begin{displaymath}
+(\neg x _1 \lor x _2) \land (\neg x _1 \lor x _2 \lor \neg x _3)
+\end{displaymath}
+The CNF formula is satisfiable if we choose $\neg x_1 = TRUE, x _2 = FALSE, \neg x_3 = FALSE$ as our assignments. This as a result would produce a CNF that is: 
 
-\begin{center}
-(TRUE $\lor$ FALSE) $\land$ (TRUE $\lor$ FALSE $\lor$ FALSE) 
-\end{center}
+\begin{displaymath}
+(TRUE \lor FALSE) \land (TRUE \lor FALSE \lor FALSE) 
+\end{displaymath}
 The first clause will be true and the second clause will be true and the conjunction of two TRUE's will be true, therefore: 
 
-\begin{center}
-(TRUE) $\land$ (TRUE) = TRUE
-\end{center}
-Within the CND formulas, clauses will have to have one literal that holds true using the logical functors in order for the clause to be true. The total formula will therefore be true if all clauses are true. \\
+\begin{displaymath}
+(TRUE) \land (TRUE) = TRUE
+\end{displaymath}
+Within the CND formulas, clauses will have to have one literal that holds true using the logical functors in order for the clause to be true. The total formula will therefore be true if all clauses are true. 
 All propositional formulas can be transformed into an equivalent formula that is in a CNF format. The conversion takes place by using rules based on logical equivalences which are:
 
 \begin{itemize}
@@ -142,78 +164,84 @@ All propositional formulas can be transformed into an equivalent formula that is
 \item Distributive law
 \end{itemize}
 
-\noindent \textbf{Double negative elimination law}\\
-\textit{P} $\Leftrightarrow$ $\neg$$\neg$\textit{P}\\
 
-\noindent \textbf{De Morgan's laws}\\
-$\neg$(\textit{P} $\land$ \textit{Q}) $\Leftrightarrow$ ($\neg$\textit{P}) $\lor$ ($\neg$\textit{Q})\\
-$\neg$(\textit{P} $\lor$ \textit{Q}) $\Leftrightarrow$ ($\neg$\textit{P}) $\land$ ($\neg$\textit{Q})\\
+The \emph{Double negative elimination law} shows that the logical equivelance of an object is the double negation of itself, as
+\begin{displaymath}
+ P \Leftrightarrow \neg \neg P
+\end{displaymath} 
 
-\noindent \textbf{Distributive law}\\
-(\textit{P} $\land$(\textit{Q $\land$ \textit{R}})) $\Leftrightarrow$ ((\textit{P} $\land$ \textit{Q}) $\lor$ (\textit{P} $\lor$ \textit{R})
+The \emph{De Morgan's laws} shows the equivalence of a negated set that is expanded into its own negated element, shown as
+\begin{displaymath}
+(\neg P \land Q) \Leftrightarrow (\neg P \lor (\neg Q)
+\end{displaymath}  
+\begin{displaymath}
+\neg(P \lor Q) \Leftrightarrow (\neg P) \land (\neg Q)
+\end{displaymath}
 
-\subsection{converting CNF to clause set logic}
-In order to transform a CNF $\rightarrow$ CLS $\rightarrow$ we must use 3 rules to make sure we do not lose anything important. These laws will state that when we acquire the transformed CNF, that it will be equivalent to the CNF at the start. \\
 
-\textbf{Commutative law}\\
-When you swap the positions of the variables they are still the same. For example:
-\begin{center}
-\textit{A} $\lor$ \textit{B} $\Leftrightarrow$ \textit{B} $\lor$ \textit{A}
-\end{center}
+The \emph{Distributive law} shows a valid replacement of variables, as
+\begin{displaymath}
+(P \land (Q \land R)) \Leftrightarrow ((P \land Q) \lor (P \lor R)
+\end{displaymath}
 
-\textbf{Associative law}\\
-The associative law declares that it does not matter how many variables are grouped. For example:
 
-\begin{center}
-\textit{A} $\lor$ (\textit{B} $\lor$ \textit{C}) $\Leftrightarrow$ (\textit{B} $\lor$ \textit{A}) $\lor$ \textit{C}
-\end{center}
-
-\textbf{Idempotents law}\\
-Idempotents law states that a clause with the same variables is equivalent to the variable. For example:
-
-\begin{center}
-(\textit{A} $\lor$ \textit{A}) $\Leftrightarrow$ \textit{A}
-\end{center}
-
+\subsection{Converting CNF to clause set logic}
+In order to transform a CNF $\rightarrow$ CLS $\rightarrow$ we must use 3 rules to make sure we do not lose anything important. These laws will state that when we acquire the transformed CNF, that it will be equivalent to the CNF at the start. 
+The \emph{Commutative law} dictates that when you swap the positions of the variables they are still the same. For example:
+\begin{displaymath}
+A \lor B \Leftrightarrow B \lor A
+\end{displaymath}
+The \emph{Associative law} associative law declares that it does not matter how many variables are grouped. For example:
+\begin{displaymath}
+A \lor (B \lor C) \Leftrightarrow (B \lor A) \lor C
+\end{displaymath}
+\emph{Idempotents law} states that a clause with the same variables is equivalent to the variable. For example:
+\begin{displaymath}
+(A \lor A) \Leftrightarrow A
+\end{displaymath}
 To represent a CNF in a set clause, each clause from the CNF is separated and we look at the set by itself out of context of the other clauses so that, \{\textbf{\textit{CL}} $\in$ \textbf{\textit{CNF}}\}. Each set will remove all duplications of the literal due to the rules of simplification. An example of this would be if we take a given CNF and transform it into a \textbf{\textit{CLS}}: 
 
-\begin{center}
-\textit{G}:= (\textit{A} $\lor$ \textit{B} $\lor$ \textit{B}) $\land$ (\textit{C} $\lor$ \textit{D} $\lor$ $\neg$\textit{D})
-\end{center}
+\begin{displaymath}
+G:= (A \lor B \lor B) \land (C \lor D \lor \neg D)
+\end{displaymath}
 
-The propositional formula \textit{G} will be converted to a set by using the rules of simplification:
+The propositional formula $G$ will be converted to a set by using the rules of simplification:
 
-\begin{center}
-\textit{G}:= \{\{\textit{A,B}\} $\land$ \{\textit{C, D, $\neg$D}\}\} 
-\end{center}
+\begin{displaymath}
+ G := \{\{{{A,B}\} \land \{{C,D,\neg D}}\}\}
+\end{displaymath}
 
 We can now take the set of literals and transform it back into a CNF formula following the Commutative, Associative and Idempotents laws to get a new CNF:
 
-\begin{center}
-(\textit{A} $\lor$ \textit{B}) $\land$ (\textit{C} $\lor$ \textit{D} $\lor$ $\neg$\textit{D})
-\end{center}
+\begin{displaymath}
+(A \lor B) \land (C \lor D \lor \neg D)
+\end{displaymath}
 As a result we have produced a new CNF. By using this method we prove a formulas satisfiability which is proven by partial assignment. 
 
 
 \subsection{Example of a formula being satisfiable}
 
 \begin{enumerate}
-\item \textit{f}:= (\textit{a $\lor$ b $\lor$ $\neg$c})
-\item $\varphi$: \textit{Var}(\textit{f}) $\rightarrow$ \{0,1\}
-\item \textit{Var}(\textit{f}) = \{a,b,c\}
-\item $\varphi$(\textit{a}):= 1
-\item $\varphi$(\textit{b}):= 1
-\item $\varphi$(\textit{c}):= 0
+\item $f:= (a \lor b \lor \neg c)$
+\item $\varphi: Var (f) \rightarrow \{0,1\}$
+\item $Var (f) = \{a,b,c\}$
+\item $\varphi(a):= 1$
+\item $\varphi(b):= 1$
+\item $\varphi(c):= 0$
 \end{enumerate}
 
-The first line notes what the formula function \textit{f} is. The second line shows that $\varphi$ maps a variable through total assignment. \textit{Var}(\textit{f}) is the set of objects to be assigned a value. Lines 4-6 show the $\varphi$ mapping of the variables \textit{a} $\rightarrow$ 1, \textit{b} $\rightarrow$ 1, \textit{c} $\rightarrow$ 0. These values are arbitrary and are chosen at random. \\
-The \textit{TASS} of \textit{f} is therefore:
+The first line notes what the formula function $f$ is. The second line shows that $\varphi$ maps a variable through total assignment. $Var(f)$ is the set of objects to be assigned a value. Lines 4-6 show the $\varphi$ mapping of the variables $a \rightarrow 1, b \rightarrow 1, c \rightarrow 0$. These values are arbitrary and are chosen at random. 
+The \textit{TASS} of \textit{f} is therefore: 
 
 \begin{center}
-eval ($\varphi$, \textit{f}) $\in$ \{0,1\}
+$\text{eval} (\varphi, f) \in \{0,1\}$
 \end{center}
 If the eval is true then it is satisfiable. However if the eval is false then it is unclassifiable. 
-
+If we compute the formula $f$ through the newly assigned variables, the formula will be
+\begin{displaymath}
+f(\varphi) = (1 \lor 1 \lor 1)
+\end{displaymath}
+Using the basic binary functor \emph{disjunction} (see Figure 2) we can now see that the formula will be satisfiable as the whole formula will evaluate to $1$. 
 
 \chapter{Computing DES through SAT}
 \label{cha:dessat}
