@@ -1,6 +1,6 @@
 \documentclass[11pt,a4paper]{report}
 
-\author{William Jones - 635773}
+\author{David William Jones - 635773}
 
 \usepackage{graphicx}
 \usepackage[driverfallback=hypertex]{hyperref}
@@ -20,6 +20,294 @@
 \chapter{Introduction}
 \label{cha:Introduction}
 
+\section{Motivation}
+\label{cha:Motivation}
+Encrypting messages and decrypting messages has held an interest with me along with the secrecy surrounded by cryptology. The main thing that fascinates me about encryption is that pieces of text can be transformed into illegible messages and then back again with the use of a key. This project will be an accomplishment if i can outline existing documentation to build a theoretical framework to translate DES to SAT. This will make it easier to understand the concepts needed to break DES. Once I have this framework of knowledge, it will be able to guide me through the process of breaking DES with the use of experiments. I hope this will be useful to other researchers in closely related fields as they will be able to use some of the methods, explanations for their work or help explain to students DES and its link with SAT. 
+
+\section{Aims of the project}
+\label{cha:Aims}
+The project will be focused on constructing an understanding of the Data Encryption Standard (DES), where one is able to encrypt messages and decrypt a message via a key. The second part of the project is to study SAT to gain an understanding of the subject so it can then start to be linked into the attacking of DES. Additionally the DES should be applied and developed into a Conjunctive Normal Form.
+The aims of the project should be left open throughout the different stages of the project as this is a theoretical paper. Discoveries through the paper may open up other areas of interest that one could look deeper into these topics that arise.\newline
+
+\noindent The aims of the project:
+
+\begin{enumerate}
+\item Research and study the Data Encryption Standard.
+\item Understanding the fundamental basics of Satisfiability and Boolean functions.
+\item Understanding and document the existing translation of DES to SAT.
+\item To develop a Data Encryption Standard via Conjunctive Normal Form.
+\item Test the CNF's in a SAT solver and find methods to improve aspects of the computation.
+\item Show the improvement of the existing facilities with the use of experiments.
+\end{enumerate} 
+
+\noindent Personal Aims of the project:
+\begin{enumerate}
+\item Learn and use the software \LaTeX \space to write the dissertation.
+\item Install and understand how to use git and github, to keep track of the progress of the project with the supervisor.
+\end{enumerate}
+
+\section{Related Work}
+\label{cha:RWork}
+There have been some published papers which are similar to the topic area, but not many. A basic understanding and framework can be taken from these papers to develop a well designed structure to the projects work.
+
+The interaction between Propositional Satisfiability and Applications in Cryptography and Ramsey Problems \cite{Gwynne2010Interaction} is a recently published thesis that looks at a different encryption standard called Advanced Encryption Standard (AES). The paper first of all outlines and declares what Boolean functions are and SAT. The thesis paper goes into depth of how the AES works by giving a very detailed explanation along with examples of how it is runs. Then there is a translation of AES into SAT with the use of Conjunctive Normal Form (CNF). The framework within the thesis provided a translation of satisfiability theorems to be used in encryption. A lot of the work talks about breaking AES which is a successor of DES. However techniques used to break AES can be adopted and will be closely linked to DES. 
+Other work such as Logical Cryptanalysis as a SAT Problem \cite{Fabio2000LogicalSAT} outlines DES which gives a great framework to use, covering everything step by step from the initial permutation to the generation of keys.
+
+There are other cryptanalysis techniques which include differential cryptanalysis. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based up having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$. 
+
+
+\chapter{Analytical Background}
+\label{cha:AnBack}
+The analytical background will first describe the terminology used throughout this paper. This gives students that are new to the area of cryptology an understanding of what some of the words are defined as.
+
+\section{Terminology}
+\label{sec:Term}
+A description of the definitions to impose a level of abstraction. \newline
+
+\textbf{Cryptography}\newline
+The study of encryption and decryption to keeping secrets a secret \cite{DBLP:series/isc/DelfsK07}.\newline
+
+\textbf{Encryption}\newline
+The process of transforming a sequence of bits into another sequence of bits with certain properties \cite{Fabio2000LogicalSAT}.\newline
+ 
+\textbf{ Decryption} \newline
+The process of mapping back the cipher text into the plain text with the use of a key \cite{Fabio2000LogicalSAT}. \newline
+
+\textbf{Cryptanalysis}\newline
+The science of studying attacks against cryptographic schemes. Successful attacks may, for example, recover plain text (or parts of the plain text) from the cipher text \cite{DBLP:books/sp/Buchmann02}. \newline
+
+\textbf{Plain text}\newline
+A message that holds meaning to the user that is to be transmitted \cite{DBLP:books/sp/Buchmann02}. \newline
+
+\textbf{Cipher text}\newline The result of encryption performed on a plain text using an algorithm \cite{Berti2003CISSP}.\newline
+
+\textbf{Key}\newline
+A Key is used to encrypt and decrypt a message \cite{Berti2003CISSP}. \newline
+
+\textbf{Boolean functions}\newline
+A logical operation were each operands will take the result of one of two values \cite{Gregory2013Cryptanalysis}. \newline
+
+\textbf{Intervertebral function}\newline
+An intervertebral function allows you to carry out the
+same process from getting state 1 to state 2.As a result the same process
+allows us to get from state 2 to state 1. \newline
+
+\textbf{Formal Notation}\newline
+M = Message \newline
+P = Plain text \newline
+C = Cipher text \newline
+K = Key \newline
+E = Encryption algorithm \newline
+D = Decryption algorithm \newline
+E$_{K}$ = Encryption Key \newline
+D$_{K}$ = Decryption Key \newline
+
+\section{General Cryptography}
+\label{sec:GenCrypt}
+Cryptography is the study of encryption and decryption to keep data a secret \cite{DBLP:series/isc/DelfsK07}. It has been around for centuries with one of the first examples being the “Caesar cipher” which was used around 40BC. This is probably one of the more famous examples of encryption.
+Encryption is important because people have secrets and want to keep the information they are transmitting hidden from people who would manage to intercept the message. If we say for example “Bob” want to send a message “x” to “Alice”. If this message is sent to Alice without any encryption and it is intercepted by say “Eve”, then eve is able to read said message “x”, thus no longer making “x” a secret. However encryption can help keep “Bobs” message a secret from “Eve”. This is done by at the most basic level, applying an encryption method to the message to produce a cipher text. The cipher text can then be passed on to “Alice”. If the message “x” is intercepted by “Eve”, then the message will be incoherent to read. This is because the encryption will have changed the message on the plain text into something new which no longer resembles the original message. Once “Alice” has the cipher text, she can now apply a decryption method to the cipher text to read the original message. It is important to note that “Alice” is able to decrypt the cipher text by using a key that both parties will have agreed on before the transmission of a message “x”. This in essence is how encryption and decryption is used.\newline
+
+\textbf{Encryption notation}
+\begin{displaymath}
+C = E (K, P)
+\end{displaymath}
+The notation for encryption shows that putting the Key and the Plain text into the encryption algorithm will output a Cipher text. \newline
+
+\textbf{Decryption notation}
+\begin{displaymath}
+P = D (K, C)
+\end{displaymath}
+The notation for decrypting shows that putting the Cipher text and key together in the decryption algorithm will output a Cipher text.\newline
+
+\textbf{Symmetric and asymmetric encryption}\newline
+Symmetric-key encryption schemes provide secure communication for a pair of communication partners \cite{DBLP:series/isc/DelfsK07}. Symmetric-key encryption algorithms have the fastest implementations in hardware and software. Therefore, they are very well-suited to the encryption of large amounts of data \cite{DBLP:series/isc/DelfsK07}. In symmetric encryption the encryption key will always be the same as the decryption key. We there for say within asymmetric encryption that E$_{K}$ = D$_{K}$. This is seen and proven in the encryption and decryption notation as both P and C can be interchanged to produce either the Plain text or Cipher text respectively.In asymmetric encryption the encryption key and decryption key are unique and the computation of decryption from encryption is infeasible. Compared to symmetric encryption, the asymmetric encryption key can be made public \cite{DBLP:series/isc/DelfsK07}. However the decryption key is still kept a secret. Because
+8
+anyone can use the encryption key it is called the “public” key. For a public key it is useful to have two different key spaces since the public key and the private key are shaped differently \cite{DBLP:series/isc/DelfsK07}.\newline
+
+\textbf{RSA}\newline
+RSA is named after its inventors Ron Rivest, Adi Shamir and Len Adleman. RSA was the first public-key cryptosystem and is still one of the most important \cite{DBLP:series/isc/DelfsK07}. The most important thing to note about RSA is that it is an asymmetric encryption method and so therefore has a public key and a private key. Both keys however are mathematically linked. The public key is known to everyone and is used to decrypt messages. On the other hand the private key is used to encrypt messages. The general idea behind the encryption of RSA is that the factors of the two generated messages cannot be recovered from $n$. RSA will generate two different random numbers which are odd prime numbers. The product is then taken from these values. A new value (e) is then introduced which is a prime number relative to $n$. The pair (n, e) is then the public key. The decryption is then computed with ne $\equiv$ 1 mod (n). (n,d) is then used as the private key. This is just one of the other possible methods of encryption available.
+
+\subsection{Block Ciphers}
+\label{subsec:BCipher}
+A block cipher is defined as a symmetric-key encryption scheme with M = C = \{0,1\}$^{n}$. $n$ is called the block length cipher \cite{DBLP:series/isc/DelfsK07}. Block ciphers are used to encrypt blocks of bits of a fixed length to a new different output \cite{DBLP:books/sp/Buchmann02}. For example if the input length of a block cipher is 8 bits, then the output block cipher will also be 8 bits long. A block cipher is referred to as a cryptosystem if its plain text and cipher text are of the same length.A block cipher will map an original Plain text into a cipher text with the use of permutation. Permutation is the mapping of F: D $\rightarrow$ D with the original values being in the cipher output but rearranged. In other words, what is represented in the input of D will be found in the output of D. Block ciphers are closely related to binary arithmetic in how to calculate the new values and current values of which will be shown later.
+A block cipher is made up of two algorithms which we will call E and D (Encryption and decryption algorithm). Both of these algorithms take in a key called K.
+
+\includegraphics[width=12cm, height=5cm]{BlockCipher.png}
+
+
+\noindent PT Block = Plain text \newline
+CT Block = Cipher text \newline
+
+\begin{center}
+figure 2.2.1: Illustration of a block cipher.
+\end{center}
+
+The reason block ciphers are useful is that it takes in $n$ inputs and outputs $n$. For the simplicity of DES we will assign $n$ = 64. Block ciphers a built by iteration were they take in as an input a key K. The key K will then be expanded into $K_{1}, K_{2},..., K_{n}$. These are called “round keys”. The cipher will use these round keys by encryping the message a number of times. So the encrpytion would work by taking producing a new message with each computation of th message and a key $R: (K_{1}, M)$ respectively. This will produce a message ($m_{1}$) were it will go through the same process with a different key until all the round keys are computated. Once all the rounds are complete one is left with C.
+
+
+\chapter{The Data Encryption Standard}
+\label{cha:DES}
+
+The Data Encryption Standard  or DES was developed by the company IBM in 1977, and originally developed from a design by Horst Feistel. DES was specified in [DESON 1997] which was previously the most widely used symmetric-key encryption algorithm. Governments, banks and applications in commerce took the DES as the basis for secure and authentic communication. However today DES is considered no longer secure (in practise). In October 2000 the US secretary of Commerce announced that the nations new encryption standard would be the successor AES. However most successors of DES are still similar, therefore DES is still important in cryptosystems \cite{DBLP:series/isc/DelfsK07} \cite{DBLP:books/sp/Buchmann02}. 
+
+\section{Construction of DES}
+\label{sec:conDES}
+The basic algorithm to construct a DES is to use a block cipher which encrypts blocks of 64 bits (Plain text) into blocks of 64 bits (Cipher text) using a key with 56 bits (the key length is actually 64 bits but 8 of those bits are used for parity checking and is otherwise ignored by the algorithm) \cite{Fabio2000LogicalSAT}.\newline
+
+
+
+\textbf{Formula Notation}
+\begin{displaymath}
+DES: \{0,1\}^{64} \times \{0,1\}^{56} \rightarrow \{0,1\}^{64}
+\end{displaymath}
+DES is constructed by taking in a 64 bit Plain text, mapping it to an encryption key which is 56 bits long, which will give a 64 bit Cipher text.\newline
+
+\textbf{Feistel Network}\newline
+DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
+\begin{displaymath}
+FeistelNetwork: \{0,1\}^n \rightarrow \{0,1\}^n
+\end{displaymath}
+The aim of the Feistel network is to build up an intervertebral function
+\begin{displaymath}
+F: \{0,1\}^{2n} \rightarrow \{0,1\}^{2n}
+\end{displaymath}
+This function will then encrypt the message (P). We start off with two separate inputs which we will call R$_{0}$ and L$_{0}$ made up of both n bits. The total input is 2n - bits. At the first stage the R$_{0}$ will become the L$_{1}$ without any change as seen on the diagram below. However the L inputs is changed. This is done by taking the R$_{0}$ input and feeding it into the arbitrary function f$_{1}$, and the result is then XOR with L$_{0}$. This output will then become R$_{1}$ input. This process is called one round of the Feistel network.
+
+\includegraphics[width=12cm, height=5cm]{FeistelNet.png}
+\begin{center}
+Figure 3.1: Illustration of a Feistel Network.
+\end{center}
+
+This process is carried out until 16 rounds have occurred, which will produce the cipher text. Each round is nearly identical except for the keys, as for each round there is a different subset of 56
+key bits that are selected and combined with the input of the previous round \cite{Fabio2000LogicalSAT}. 
+This can be formulated as (where i = 1,2,...,d):
+\begin{displaymath}
+L_{i} = R_{i}-1
+\end{displaymath}
+\begin{displaymath}
+R_{i} = F_{i} (R_{i}-1) \oplus L_{i}
+\end{displaymath}
+
+The cipher text is then constructed using inverse permutation IP$^{-1}$:
+\begin{displaymath}
+C = IP^{-1}(R_{16}L_{16})
+\end{displaymath}
+
+\subsection{Demonstration of DES}
+\label{subsec: DemoDES}
+
+The demonstration will outline how first of all the code is generated and how the input values are determined. If we started with a message, for example:
+\begin{displaymath}
+M = ABCDEF0123456789
+\end{displaymath}
+We would rewrite this in a binary format to get our 64 bit plain text. In a table this would look like: \newline
+
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
+\hline
+  {} & y$_{1}$ & y$_{2}$ & y$_{3}$ & y$_{4}$ & y$_{5}$ & y$_{6}$ & y$_{7}$ & y$_{8}$ \\ \hline
+  x$_{1}$ & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 1 \\ \hline
+  x$_{2}$ & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 1 \\ \hline
+  x$_{3}$ & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 \\ \hline
+  x$_{4}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\ \hline
+  x$_{5}$ & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 \\ \hline
+  x$_{6}$ & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 \\ \hline
+  x$_{7}$ & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 \\ \hline
+  x$_{8}$ & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 \\ \hline
+\end{tabular}
+\end{center}
+
+The first 4 cells of each row indicate the binary digit value. As a result the letter A is defined as:
+
+\begin{displaymath}
+A \Rightarrow A = \{(x_{1}...x_{1}, y_{1}...y_{4})\}
+\end{displaymath}
+This translates as A having the binary value `1010', which is the binary for the letter A. Now we have made the connection between Block ciphers and binary arithmetic. The message will then result in a collection of 64 binary digits:
+
+\begin{displaymath}
+M = 1010 1011 1100 1101 1110 1111 0000 0001 0010 0011 0101 0110 0111 1000 1001
+\end{displaymath}
+As we stated before in the Feistel network, we need to split the message into two 36 bit messages. The left and right input will look like:
+
+\begin{displaymath}
+Left Input: 1010 1011 1100 1101 1110 1111 0000
+\end{displaymath}
+\begin{displaymath}
+Right Input: 0001 0010 0011 0101 0110 0111 1000 1001
+\end{displaymath}
+We then want to apply the initial permutation onto our message which maps if:
+
+\begin{displaymath}
+p \in \{0,1\}^{64} | p = p_{1}, p_{2}, p_{3}, p_{4},...,p_{64} 
+\end{displaymath}
+As a result, IP must then be:
+\begin{displaymath}
+IP(_{p}) = p_{47}, p_{23}, p_{52},...,p_{3}
+\end{displaymath}
+
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c|c|c| }
+\hline
+1 & 1 & 0 & 0 & 1 & 1 & 0 & 0\\ \hline
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline
+1 & 1 & 0 & 0 & 1 & 1 & 0 & 0\\ \hline
+1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\ \hline
+1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\ \hline
+1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\ \hline
+1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\ \hline
+1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\ \hline
+\end{tabular}
+\end{center}
+The new mapping of IP gives us Table(a). We can then apply a key to this table to produce our first round table.\newline
+
+\noindent \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
+K = & 0001 & 0011 & 0011 & 0100 & 0101 & 0111 & 0111 & 1001 
+\\ \hline
+\end{tabular} 
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
+1001 & 1011 & 1011 & 1100 & 1101 & 1111 & 1111 & 0001\\ \hline
+\end{tabular}\newline
+\end{center}
+We then will compute the XOR as stated by the Feistel network. So as a result the R$_{0}$ will become R$_{1}$ which will be computed on the next round.
+
+This result will be as
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
+C$_{0}$ & 1111 & 0000 & 1100 & 1100 & 1010 & 1010 & 1111\\ \hline
+D$_{0}$ & 0101 & 0101 & 0110 & 0110 & 0111 & 1000 & 1111\\ \hline
+C$_{1}$ & 1110 & 0001 & 1001 & 1001 & 0101 & 0101 & 1111\\ \hline
+D$_{1}$ & 1010 & 1010 & 1001 & 1001 & 1110 & 0011 & 1110\\ \hline
+\end{tabular}\newline
+\end{center}
+
+Using the key one would XOR C$_{1}$ and D$_{1}$ and will get:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}\hline
+K$_{1}$ & 0001 & 1011 & 0000 & 0010 & 1110 & 1111 & 1111 & 1100 & 0111 & 0000 & 0111 & 0010\\ \hline
+\end{tabular}\newline
+\end{center}
+
+The next step is to use the key to obtain\newline
+
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+$E(R_{0}) \oplus K_{1}$ & 0110 & 0001 & 0001 & 0111 \\ \hline
+\end{tabular}
+
+\indent \begin{tabular}{|c|c||c|c|c|c|c|c|}\hline
+1011 & 1010 & 0000 & 1100 & 1001 & 0101 & 0010 & 0111\\ \hline
+\end{tabular}\newline
+
+Therefore R$_{1}$ = 6117BA0CD27
+
+If there was only one wound of function keys then R$_{1}$ would be the output which would make
+
+\begin{displaymath}
+R_{1} = C
+\end{displaymath}
 
 \chapter{Preliminaries}
 \label{cha:prelim}
@@ -91,7 +379,7 @@ $p$ & $\neg p$\\ \hline
 \end{tabular}  
 \end{center}
 \begin{center}
-\emph{Figure 1: negation}
+{Figure 4.2.2: negation.}
 \end{center}
 As seen in \emph{Figure 1} the $\neg p$ will always have a value that is opposite $p$.
 The logical \emph{functors} each have a unique output if called upon using a set of Bool elements.
@@ -107,7 +395,7 @@ $p$ & $q$ & $p \land q$ & $p \lor q$ & $p \Rightarrow q$ & $p \equiv q$ & $p \op
 \end{tabular}  
 \end{center}
 \begin{center}
-\emph{Figure 2: Four binary functors}
+{Figure 4.2.3: Four binary functors.}
 \end{center}
 The \emph{Conjunction} functor ($\land$) takes two Bool elements from a set $\{0,1\}$ and will return true if the elements of both elements are $1$. If however either one of the two elements or both are $0$, then the Conjunction of the two elements will return $0$. The \emph{Disjunction} functor $(\lor)$ takes two Bool elements from a set $\{0,1\}$ and will return a true value if both elements are valued as $1$, or either one of the two elements are equal to $1$. If however neither of the two elements are equal to $1$, then the Disjunction will return $0$. The \emph{Implication} functor $(\Rightarrow)$ takes two Bool from a set $\{0,1\}$ and will return true if both elements are equal to $1$, both elements are equal to $0$ or the first element is $0$ and the second element is $1$, as this says that false implies true which is true. However the implication functor will return true if the elements assignments are for the first element $1$ and the second is $0$, as this implies that truth implies false which is false. \emph{Equivalence} functor takes two Bool elements from a set $\{0,1\}$ and will return true if the elements assignments are both either $1$ or $0$. However, if one of the two elements is $1$ while the other is $0$, then the equivelance of the two elements will evaluate to $0$. 
 
@@ -128,9 +416,9 @@ This will give us $\top:= \emptyset, \text{ so now we can have } \top \in$ \text
 \end{displaymath}
 $\varphi$ is a satisfying assignment for F if $\varphi \: \ast = \top$. A clause set is satisfiable if there exists a partial assignment $\varphi$ which satisfies F, i.e., $\varphi \: \ast = \top$. 
 
-\subsection{Example of \textbf{\textit{PASS}}}
+\subsection{Example of Partial Assignment}
 $<> \in \textbf{\textit{PASS}}$ is an example of the empty partial assignment.
-$< v \rightarrow \epsilon > \text{where} v \in Var \land v \in \{0,1\}$. $v$ is assigned to $\epsilon$ which is within the \textbf{\textit{PASS}} where $v$ is also found as a member in the $Var$ and is either $0$ or $1$. 
+$< v \rightarrow \epsilon > \text{where } v \in Var \land v \in \{0,1\}$. $v$ is assigned to $\epsilon$ which is within the \textbf{\textit{PASS}} where $v$ is also found as a member in the $Var$ and is either $0$ or $1$. 
 
 \begin{displaymath}
 A \lor 0 \rightarrow 0, \: A \lor 1 \rightarrow 1, \: A \lor 2 \rightarrow 2
@@ -241,13 +529,127 @@ If we compute the formula $f$ through the newly assigned variables, the formula 
 \begin{displaymath}
 f(\varphi) = (1 \lor 1 \lor 1)
 \end{displaymath}
-Using the basic binary functor \emph{disjunction} (see Figure 2) we can now see that the formula will be satisfiable as the whole formula will evaluate to $1$. 
+Using the basic binary functor \emph{disjunction} (see Figure 4.2.3) we can now see that the formula will be satisfiable as the whole formula will evaluate to $1$.
+
+\chapter{Applying DES to SAT}
+\label{cha:AppDESSAT}
+
+For combining the two areas, we will consider block ciphers which we will call b. As stated before, we have the three elements of P, C and K. We then must consider the main processes of these elements which is to encrypt and decrypt using the formulas 
+
+\begin{displaymath}
+encrypt_{b} (P,K) = C 
+\end{displaymath}
+\begin{displaymath}
+decrypt_{b} (C, K) = P
+\end{displaymath}
+From this formula notation we must consider the scenario were one is given two of the three parts. For example if we have C and P we must thus determine K. This is where we can apply SAT to make a logical connection from the binary values that are given within DES and form a relation via Boolean functions to determine a CNF.
+As stated before in chapter 4 Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the DES operation would be 
+
+\begin{displaymath}
+des(P,K,C)
+\end{displaymath}
+This relation holds if and only if encrypt$_{b}$ (P,K) = C. 
+As a result of this relation, we have a satisfiability problem. 
+
+\section{Example of DES via SAT }
+If we were to consider a DES that had one key bits for both the key, Plain text and Cipher text then it is easy to understand the fundamentals of how the SAT computation can be done in a bigger picture. If we start with a basic example where each variable has a length of 1, then:
+
+\begin{displaymath}
+N: (P, C) = 1
+\end{displaymath}
+\begin{displaymath}
+Key = 1
+\end{displaymath}
+Then if we were then to encrypt a message using the formula as stated before then
+\begin{displaymath}
+DES: \{0,1\}^{1} \times \{0,1\}^1 \rightarrow \{0,1\}^1
+\end{displaymath}
+This can be shown via a truth table to show the Boolean output for if the three variables are all true. With this truth table we have 2 variables. This means our output in the cipher will be 2$^{n}$ which in this case is 4. 
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Plain text & Key & Cipher\\ \hline
+0 & 0 & {}\\ \hline
+1 & 0 & {}\\ \hline
+0 & 1 & {}\\ \hline
+1 & 1 & {}\\ \hline
+\end{tabular}
+\end{center}
+Permutation assigns all bits in the plain text to appear in the Cipher. This means we must then fill out the rest of the table following the function of permutation, F: D$_{i} \rightarrow$ D$_{i}$
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Plain text & Key & Cipher\\ \hline
+0 & 0 & 0\\ \hline
+1 & 0 & 1\\ \hline
+0 & 1 & 0\\ \hline
+1 & 1 & 1\\ \hline
+\end{tabular}
+\end{center}
+From this table we can now form a relation between the satisfiability of the C, K and P.
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Plain text & Key & Cipher & Output\\ \hline
+0 & 0 & 0 & 1\\ \hline
+0 & 0 & 1 & 0\\ \hline
+1 & 0 & 0 & 0\\ \hline
+1 & 0 & 1 & 1\\ \hline
+0 & 1 & 0 & 1\\ \hline
+0 & 1 & 1 & 0\\ \hline
+1 & 1 & 0 & 0\\ \hline
+1 & 1 & 1 & 1\\ \hline
+\end{tabular}
+\end{center}
+We find the output by taking each variable {P,K,C} = {P$_{1}$, K$_{1}$, C$_{1}$}. If we take the first row we can see the variables are {0,0,0}. We then use this and look at the previous table to see if the same three values appear. The set {0,0,0} appears on the first line, so therefore the output will be one. However if the set does not appear then we represent the output as a 0. Once the table is completed one can start to construct CNF statements. 
+The CNF clauses for the table constructed with an output would be:
+
+\begin{displaymath}
+(P_{1} \lor K_{1} \lor \neg C_{1}) \land (\neg P_{1} \lor K_{1} \lor C_{1}) \land (P_{1} \lor \neg K_{1} \lor \neg C_{1}) \land (\neg P_{1} \lor \neg K_{1} \lor C_{1})
+\end{displaymath}
+This means we have constructed a CNF out of using the values from P, K, C via the use of SAT. 
+
+
+
+
+
+
+\chapter{Software Applications}
+\label{cha:softApp}
+
+The OK-Library is a research platform on generalised satisfiability developed by Oliver Kullmann \cite{Oliver2013OKlibrary}. The OKlibrary provides a computer-algebra based system for specifications and prototyping. 
+
+\section{OKlibrary}
+\label{sec:OKl}
+The library additionally generates a C++ library using modern C++. 
+The OKlibrary will be a tool needed to break the DES, as it will be able to compute the satisfiability much faster compared to manually doing it. This is because the OKlibrary is an environment for attacking “intractable problems”. The aims of using the OKlibrary is to be able to understand first of all how to use such a program in order to attack the DES. 
+For the research I will be using the software that has been produced DES translation. This will be available in the OKlibrary. A lot of the software that is to be produced will be done in the functional programming language Maxima computer algebra system. The Maxima computer language is used to initially implement algorithms and ideas within the OKlibrary. 
+
+The OKlibrary will be used to run DES algorithms in CNF form in order to try and break them. Only the Data Encryption Standard Directory Reference will be used as part of the project, as a lot of the other directories are irrelevant.
+
+
+
+\section{ \LaTeX}
+The program LaTeX will be used in order to produce a clear and formatted research paper. \LaTeX\space is a document preparation system, used for research papers and alike. It is generally the case that the longer the project is in say the application “Microsoft Word”, the harder it is to keep track of the different elements that get moved around and the formatting. \LaTeX\space gives the user control over the formatting of the document, which makes it easier for the user to maintain control over the project. \LaTeX\space is not strictly for research papers and can be used for other forms of publishing. The program \LaTeX\space is written in something called the \TeX\space macro language. Coding is required to use the \TeX\space macro language. However the coding is straight forward and easy allowing the majority of people to pick it up quickly.  
+
+\section{Github}
+\label{sec:Git}
+Github is a file sharing hosting service which allows users to interact with open source projects. Github allows a user to make a repository which will store documents. Users can then see each others repository to view their work. The main feature of Github is the `push', `pull' and `fork' operations from a repository. Forking a repository will create a identical version of that users repository on your Github account.The person that is collaborating on the project can make changes to their copy and then push it back to the main repository. In doing so the original user can then see the changes that are made and then sync the documents to a new one. Github allows the user to see what has been deleted and what has been added. For the person collaborating on the project, they can now make pull requests to take a copy of the documents to change them. 
+Git is a program that allows a user to push pull and fork repository's and mainly keep track of the files located on a users system. Git uses the command line bash to execute commands in relation to the git files.
+
 
 \chapter{Computing DES through SAT}
-\label{cha:dessat}
+\label{cha:DESsat}
+
+\chapter{Evaluation}
+\label{cha:Eval}
 
 \bibliographystyle{plain}
-
+\nocite{*}
 \bibliography{Bibliography}
 
 \end{document}}
