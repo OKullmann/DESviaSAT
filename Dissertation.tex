@@ -8,6 +8,10 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{latexsym}
+\usepackage{fancyhdr}
+
+
+
 
 \DeclareMathOperator{\power}{\mathcal{P}}
 
@@ -27,7 +31,7 @@ Encrypting messages and decrypting messages has held an interest with me along w
 \section{Aims of the project}
 \label{cha:Aims}
 The project will be focused on constructing an understanding of the Data Encryption Standard (DES), where one is able to encrypt messages and decrypt a message via a key. The second part of the project is to study SAT to gain an understanding of the subject so it can then start to be linked into the attacking of DES. Additionally the DES should be applied and developed into a Conjunctive Normal Form.
-The aims of the project should be left open throughout the different stages of the project as this is a theoretical paper. Discoveries through the paper may open up other areas of interest that one could look deeper into these topics that arise.\newline
+The aims of the project should be left open throughout the different stages of the project as this is a theoretical paper. Discoveries through the paper may open up other areas of interest that one could look deeper into these topics that arise.
 
 \noindent The aims of the project:
 
@@ -38,13 +42,18 @@ The aims of the project should be left open throughout the different stages of t
 \item To develop a Data Encryption Standard via Conjunctive Normal Form.
 \item Test the CNF's in a SAT solver and find methods to improve aspects of the computation.
 \item Show the improvement of the existing facilities with the use of experiments.
-\end{enumerate} 
+\end{enumerate}
 
-\noindent Personal Aims of the project:
+\section{Science engineering}
+\label{sec:sciEng}
+The main aim of the project has already been declared, but there are additional objectives which must be taken into account when writing the research paper. 
 \begin{enumerate}
 \item Learn and use the software \LaTeX \space to write the dissertation.
 \item Install and understand how to use git and github, to keep track of the progress of the project with the supervisor.
 \end{enumerate}
+\LaTeX \space is a writing environment which gives the user more control when constructing a paper over more popular software such as Microsoft Word. A detailed analysis of the advantages of using such a software can be found in \ref{sec:LaTeX}.
+
+Github is a file sharing hosting service which allows one or more person to work on a project on their own machines. A detailed description of Github can be found in \ref{sec:Git}
 
 \section{Related Work}
 \label{cha:RWork}
@@ -54,6 +63,7 @@ The interaction between Propositional Satisfiability and Applications in Cryptog
 Other work such as Logical Cryptanalysis as a SAT Problem \cite{Fabio2000LogicalSAT} outlines DES which gives a great framework to use, covering everything step by step from the initial permutation to the generation of keys.
 
 There are other cryptanalysis techniques which include differential cryptanalysis. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based up having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$. 
+
 
 
 \chapter{Analytical Background}
@@ -89,8 +99,21 @@ A logical operation were each operands will take the result of one of two values
 
 \textbf{Intervertebral function}\newline
 An intervertebral function allows you to carry out the
-same process from getting state 1 to state 2.As a result the same process
+same process from getting state 1 to state 2. As a result the same process
 allows us to get from state 2 to state 1. \newline
+
+\textbf{Permutation}\newline
+Given D is a set, a \emph{permutation} of D is a bijective mapping of 
+\begin{displaymath}
+F: D \rightarrow D
+\end{displaymath}
+with the original values being in the output but rearranged. In other words, what is represented in the input of D will be found in the output of D.
+
+An example of a permutation would be is that there is a total of 6 permutations available for the set \{a,b,c\} which are: 
+\begin{center}
+(a,b,c) (a,c,b) (b,a,c) (b,c,a) (c,a,b) (c,b,a)
+\end{center}
+
 
 \textbf{Formal Notation}\newline
 M = Message \newline
@@ -105,13 +128,13 @@ D$_{K}$ = Decryption Key \newline
 \section{General Cryptography}
 \label{sec:GenCrypt}
 Cryptography is the study of encryption and decryption to keep data a secret \cite{DBLP:series/isc/DelfsK07}. It has been around for centuries with one of the first examples being the “Caesar cipher” which was used around 40BC. This is probably one of the more famous examples of encryption.
-Encryption is important because people have secrets and want to keep the information they are transmitting hidden from people who would manage to intercept the message. If we say for example “Bob” want to send a message “x” to “Alice”. If this message is sent to Alice without any encryption and it is intercepted by say “Eve”, then eve is able to read said message “x”, thus no longer making “x” a secret. However encryption can help keep “Bobs” message a secret from “Eve”. This is done by at the most basic level, applying an encryption method to the message to produce a cipher text. The cipher text can then be passed on to “Alice”. If the message “x” is intercepted by “Eve”, then the message will be incoherent to read. This is because the encryption will have changed the message on the plain text into something new which no longer resembles the original message. Once “Alice” has the cipher text, she can now apply a decryption method to the cipher text to read the original message. It is important to note that “Alice” is able to decrypt the cipher text by using a key that both parties will have agreed on before the transmission of a message “x”. This in essence is how encryption and decryption is used.\newline
+Encryption is important because people have secrets and want to keep the information they are transmitting hidden from people who would manage to intercept the message. If we say for example “Bob” want to send a message “x” to “Alice”. If this message is sent to Alice without any encryption and it is intercepted by say “Eve”, then eve is able to read said message “x”, thus no longer making “x” a secret. However encryption can help keep “Bobs” message a secret from “Eve”. This is done by at the most basic level, applying an encryption method to the message to produce a cipher text. The cipher text can then be passed on to “Alice”. If the message “x” is intercepted by “Eve”, then the message will be incoherent to read. This is because the encryption will have changed the message on the plain text into something new which no longer resembles the original message. Once “Alice” has the cipher text, she can now apply a decryption method to the cipher text to read the original message. It is important to note that “Alice” is able to decrypt the cipher text by using a key that both parties will have agreed on before the transmission of a message “x”. This in essence is how encryption and decryption is used. \newline
 
 \textbf{Encryption notation}
 \begin{displaymath}
 C = E (K, P)
 \end{displaymath}
-The notation for encryption shows that putting the Key and the Plain text into the encryption algorithm will output a Cipher text. \newline
+The notation for encryption shows that putting the Key and the Plain text into the encryption algorithm will output a Cipher text.
 
 \textbf{Decryption notation}
 \begin{displaymath}
@@ -127,28 +150,125 @@ anyone can use the encryption key it is called the “public” key. For a publi
 \textbf{RSA}\newline
 RSA is named after its inventors Ron Rivest, Adi Shamir and Len Adleman. RSA was the first public-key cryptosystem and is still one of the most important \cite{DBLP:series/isc/DelfsK07}. The most important thing to note about RSA is that it is an asymmetric encryption method and so therefore has a public key and a private key. Both keys however are mathematically linked. The public key is known to everyone and is used to decrypt messages. On the other hand the private key is used to encrypt messages. The general idea behind the encryption of RSA is that the factors of the two generated messages cannot be recovered from $n$. RSA will generate two different random numbers which are odd prime numbers. The product is then taken from these values. A new value (e) is then introduced which is a prime number relative to $n$. The pair (n, e) is then the public key. The decryption is then computed with ne $\equiv$ 1 mod (n). (n,d) is then used as the private key. This is just one of the other possible methods of encryption available.
 
-\subsection{Block Ciphers}
+
+\section{Sets}
+\label{sec:sets}
+
+A set is a collection of objects. To show that an object $x$ is in the set $X$ we use the membership symbol ($\in$) to show that $x$ belongs in something. This will be written as $x \in X$. Sets can be elements of other sets which are referred to as subsets. To show that all subsets of a set $X$ we write it as $\power(X)$. Two sets are equivalent if they have the same exact elements in both of the sets. It should be noted that although the two sets have the same elements, the sets themselves can mean different things. Set $X$ is in set $Y$ if all elements of $X$ are an element of $Y$.
+Therefore we can say for the sets $X$ and $Y$:
+\begin{center}
+  $X=Y$ if and only if $X \subseteq Y$ and $Y \subseteq X$.
+\end{center}
+A set can have nothing within inside it (no elements) which is referred as the empty set. The empty set is denoted as the symbol $\emptyset$ or $\{\}$. There are four operations that can be applied to sets that can produce new sets.  
+
+\subsection{The four basic operations}
+\label{sec:fourbasop}
+
+The \emph{intersection} operation takes two sets and finds the element that occur in both set $X$ and set $Y$, $X \cap Y$. Therefore intersection is:
+\begin{displaymath}
+  X \cap Y = \{x : x \in X  \text{ and } x \in Y\}.
+\end{displaymath}
+
+The \emph{union} operation takes two sets to find an element that is in either both of the two sets or belongs in the set $X$ or $Y$, $X \cup Y$. Therefore the union of sets $X$ and $Y$ is:
+\begin{displaymath}
+  X \cup Y = \{x : x \in X  \text{ or } x \in Y\}.
+\end{displaymath}
+
+The \emph{difference} operation finds an element that is in set $X$ but not in set $Y$, $X \setminus Y$. Therefore the difference of sets $X$ and $Y$ is:
+\begin{displaymath}
+  X \setminus Y = \{x : x \in X  \text{ and } x \notin Y\}.
+\end{displaymath}
+
+The sets we have been talking about up to this point have elements within them that are not dependant on the order they are in. For example the set $\{x,y\}$ is the same as the set $\{y, x\}$ as they both have the same elements. However we can have ordered sets were the position of a element within the set is important and makes the set unique. To define a set that is ordered we use parentheses  ``$()$'' , i.e., $(x,y)$. 
+The (Cartesian) product of sets $X, Y$ is
+\begin{displaymath}
+  X \times Y = \{(x,y) : x \in X \text{ and } y \in Y\}.
+\end{displaymath}
+A \emph{relation} is a subset of the product of sets, which is written as $R \subseteq X \times Y$. A \emph{function} relates an input to an output. Functions are denoted by a small ``$f$'' followed by its input. A simple example of this would be $f(x) = x^2$. Using the variable x for when $x=4$ the function will therefore be, $f(x) = 16$.
+
+
+\section{Block Ciphers}
 \label{subsec:BCipher}
-A block cipher is defined as a symmetric-key encryption scheme with M = C = \{0,1\}$^{n}$. $n$ is called the block length cipher \cite{DBLP:series/isc/DelfsK07}. Block ciphers are used to encrypt blocks of bits of a fixed length to a new different output \cite{DBLP:books/sp/Buchmann02}. For example if the input length of a block cipher is 8 bits, then the output block cipher will also be 8 bits long. A block cipher is referred to as a cryptosystem if its plain text and cipher text are of the same length.A block cipher will map an original Plain text into a cipher text with the use of permutation. Permutation is the mapping of F: D $\rightarrow$ D with the original values being in the cipher output but rearranged. In other words, what is represented in the input of D will be found in the output of D. Block ciphers are closely related to binary arithmetic in how to calculate the new values and current values of which will be shown later.
+A block cipher is defined as a symmetric-key encryption scheme with
+\begin{displaymath}
+ M = C = \{0,1\}^{n}
+\end{displaymath}
+ $n$ is the block length of the cipher \cite{DBLP:series/isc/DelfsK07}. Block ciphers are used to encrypt blocks of bits of a fixed length to a new different output \cite{DBLP:books/sp/Buchmann02}. For example if the input length of a block cipher is 8 bits, then the output block cipher will also be 8 bits long. A block cipher is referred to as a cryptosystem if its plain text and cipher text are of the same length.A block cipher will map an original Plain text into a cipher text with the use of permutation. Block ciphers are closely related to binary arithmetic in how to calculate the new values and current values of which will be shown later.
 A block cipher is made up of two algorithms which we will call E and D (Encryption and decryption algorithm). Both of these algorithms take in a key called K.
 
 \includegraphics[width=12cm, height=5cm]{BlockCipher.png}
-
 
 \noindent PT Block = Plain text \newline
 CT Block = Cipher text \newline
 
 \begin{center}
-figure 2.2.1: Illustration of a block cipher.
+figure 2.2.1\label{Fig:2.2.1}: Illustration of a block cipher.
 \end{center}
+The reason block ciphers are useful is that it takes in $n$ inputs and outputs $n$. Block ciphers are built by iteration were they take in as an input a key K. The key K will then be expanded into $K_{1}, K_{2},..., K_{n}$. These are called \emph{round keys}. The cipher will use these round keys by encrypting the message a number of times. So the encryption would work by taking producing a new message with each computation of th message and a key $R: (K_{1}, M)$ respectively. This will produce a message ($m_{1}$) were it will go through the same process with a different key until all the round keys are computed. Once all the rounds are complete one is left with C.
 
-The reason block ciphers are useful is that it takes in $n$ inputs and outputs $n$. For the simplicity of DES we will assign $n$ = 64. Block ciphers a built by iteration were they take in as an input a key K. The key K will then be expanded into $K_{1}, K_{2},..., K_{n}$. These are called “round keys”. The cipher will use these round keys by encryping the message a number of times. So the encrpytion would work by taking producing a new message with each computation of th message and a key $R: (K_{1}, M)$ respectively. This will produce a message ($m_{1}$) were it will go through the same process with a different key until all the round keys are computated. Once all the rounds are complete one is left with C.
+Block ciphers can encrypt messages of arbitrary length. There are different properties and issues that must be looked at regarding the different lengths. First we look at where the plain text is greater than the cipher text (P $\textless$ C). This essentially means that our input is grater than our output. Practically this does not make sense as there will be a lose of data within the cipher text. However an alternative view would be that error checking was in the plain text , so therefore they were parity bits. In this regard this arbitrary block cipher would be acceptable. 
 
+An alternative block cipher encryption would be if the plain text contains less bits than the cipher text (P $\textgreater$ C). This will essentially mean that random useless data is added onto the cipher text. As a result of this, in theory, the cipher text is securer in terms of plain text attacking. This is due to the user having to use up more time to try and find meaning to the random useless bits therefore taking more time to crack. 
+
+The security of an encryption is determined by its key. Specifically the more key iterations a encryption has, the more secure/ harder it will be to break. A encryption with only one key will encrypt a plain text once. This is less effective in terms of security compared to a plain text that uses more keys. This is due to the fact that the randomness of the cipher text increases.
+
+Weak keys in cryptography are keys which when used with a plain text will result in a cipher text with specific properties. These properties are unfavourable. It should be noted that weak keys are rare due to the amount of keys available to encrypt a message, but do raise a major flaw in the security of a message.  As a result it is often attempted to reduce the chance of obtaining a weak key. An example of a weak key would be if all the bits are alternating 0's and 1's. 
+
+There are "basic properties" given with keys to show that keys will always map to different outputs. In other words, if we are given two different keys, there exists a mapping for each key such that there will always be a different output (never both map to the same value). In other words, encryption key 1 (E$_{K1}$) is not equal to encryption key 2 (E$_{K2}$) in terms of mapping to the same cipher text (C).
+\begin{displaymath}
+E_{K1} \neq E_{K2} \rightarrow C
+\end{displaymath}
+An example of this would be given a plain text of 1 bit in length that is assigned to binary value 1 and two keys each one bit in length where E$_{K1}$ is assigned to 0 and another key E$_{K2}$ is assigned 1. In the example given below, we are looking for two cipher texts not to be equal.
+
+A toy example of this strong property would be:
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+P & E$_{K1}$ & E$_{K2}$ & C \\ \hline
+1 & 0 & 1 & {}\\ 
+\hline
+\end{tabular}  
+\end{center}
+\begin{center}
+Figure 2.2.2\label{Fig: 2.2.2}: Denoting the assignment of values
+\end{center}
+The Cipher text will be the result of using the XOR function (see \ref{Figure:4.2.3}) over the plain text and the E$_{Kx}$ to produce a cipher text C$_x$. The Strong property will hold if both cipher texts are not equal. 
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+P & E$_{K1}$ & E$_{K2}$ & P $\oplus$ E$_{K1}$ & P $\oplus$ E$_{K2}$\\ \hline
+1 & 0 & 1 & 1 & 0 \\
+\hline
+\end{tabular}  
+\end{center}
+\begin{center}
+Figure 2.2.3\label{Fig: 2.2.3}: XOR function over P and K to produce C  
+\end{center}
+The output of P $\oplus$ E$_{K1}$ is equivalent to saying it is cipher text 1 (C$_1$) and P $\oplus$ E$_{K2}$ is equivalent to cipher text 2 (C$_2$). Therefore we have proven that the output C$_1$ $\neq$ C$_2$.  
+ As seen in figure \ref{Fig: 2.2.3} two different keys do not map to the same output. As a result this is a "Strong property" of keys which is desirable when looking at the security of a block cipher. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 \chapter{The Data Encryption Standard}
 \label{cha:DES}
 
-The Data Encryption Standard  or DES was developed by the company IBM in 1977, and originally developed from a design by Horst Feistel. DES was specified in [DESON 1997] which was previously the most widely used symmetric-key encryption algorithm. Governments, banks and applications in commerce took the DES as the basis for secure and authentic communication. However today DES is considered no longer secure (in practise). In October 2000 the US secretary of Commerce announced that the nations new encryption standard would be the successor AES. However most successors of DES are still similar, therefore DES is still important in cryptosystems \cite{DBLP:series/isc/DelfsK07} \cite{DBLP:books/sp/Buchmann02}. 
+The Data Encryption Standard  or DES was developed by the company IBM in 1977 and originally developed from a design by Horst Feistel. DES was specified in [DESON 1997] which was previously the most widely used symmetric-key encryption algorithm. Governments, banks and applications in commerce took the DES as the basis for secure and authentic communication. However today DES is considered no longer secure (in practise). In October 2000 the US secretary of Commerce announced that the nations new encryption standard would be the successor AES. However most successors of DES are still similar, therefore DES is still important in cryptosystems \cite{DBLP:series/isc/DelfsK07} \cite{DBLP:books/sp/Buchmann02}. 
 
 \section{Construction of DES}
 \label{sec:conDES}
@@ -163,7 +283,7 @@ DES: \{0,1\}^{64} \times \{0,1\}^{56} \rightarrow \{0,1\}^{64}
 DES is constructed by taking in a 64 bit Plain text, mapping it to an encryption key which is 56 bits long, which will give a 64 bit Cipher text.\newline
 
 \textbf{Feistel Network}\newline
-DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
+DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions (see \ref{Figure:4.2.3}) and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
 \begin{displaymath}
 FeistelNetwork: \{0,1\}^n \rightarrow \{0,1\}^n
 \end{displaymath}
@@ -294,7 +414,7 @@ K$_{1}$ & 0001 & 1011 & 0000 & 0010 & 1110 & 1111 & 1111 & 1100 & 0111 & 0000 & 
 The next step is to use the key to obtain\newline
 
 \begin{tabular}{|c|c|c|c|c|c|c|}\hline
-$E(R_{0}) \oplus K_{1}$ & 0110 & 0001 & 0001 & 0111 \\ \hline
+$E(R_{0}) \oplus K_{1}$ & 0110 & 0001 & 0001 & 0111\\ \hline
 \end{tabular}
 
 \indent \begin{tabular}{|c|c||c|c|c|c|c|c|}\hline
@@ -311,44 +431,6 @@ R_{1} = C
 
 \chapter{Preliminaries}
 \label{cha:prelim}
-
-
-\section{Sets}
-\label{sec:sets}
-
-A set is a collection of objects. To show that an object $x$ is in the set $X$ we use the membership symbol ($\in$) to show that $x$ belongs in something. This will be written as $x \in X$. Sets can be elements of other sets which are referred to as subsets. To show that all subsets of a set $X$ we write it as $\power(X)$. Two sets are equivalent if they have the same exact elements in both of the sets. It should be noted that although the two sets have the same elements, the sets themselves can mean different things. Set $X$ is in set $Y$ if all elements of $X$ are an element of $Y$.
-Therefore we can say for the sets $X$ and $Y$:
-\begin{center}
-  $X=Y$ if and only if $X \subseteq Y$ and $Y \subseteq X$.
-\end{center}
-A set can have nothing within inside it (no elements) which is referred as the empty set. The empty set is denoted as the symbol $\emptyset$ or $\{\}$. There are four operations that can be applied to sets that can produce new sets.  
-
-\subsection{The four basic operations}
-\label{sec:fourbasop}
-
-The \emph{intersection} operation takes two sets and finds the element that occur in both set $X$ and set $Y$, $X \cap Y$. Therefore intersection is:
-\begin{displaymath}
-  X \cap Y = \{x : x \in X  \text{ and } x \in Y\}.
-\end{displaymath}
-
-The \emph{union} operation takes two sets to find an element that is in either both of the two sets or belongs in the set $X$ or $Y$, $X \cup Y$. Therefore the union of sets $X$ and $Y$ is:
-\begin{displaymath}
-  X \cup Y = \{x : x \in X  \text{ or } x \in Y\}.
-\end{displaymath}
-
-The \emph{difference} operation finds an element that is in set $X$ but not in set $Y$, $X \setminus Y$. Therefore the difference of sets $X$ and $Y$ is:
-\begin{displaymath}
-  X \setminus Y = \{x : x \in X  \text{ and } x \notin Y\}.
-\end{displaymath}
-
-The sets we have been talking about up to this point have elements within them that are not dependant on the order they are in. For example the set $\{x,y\}$ is the same as the set $\{y, x\}$ as they both have the same elements. However we can have ordered sets were the position of a element within the set is important and makes the set unique. To define a set that is ordered we use parentheses  ``$()$'' , i.e., $(x,y)$. 
-The (Cartesian) product of sets $X, Y$ is
-\begin{displaymath}
-  X \times Y = \{(x,y) : x \in X \text{ and } y \in Y\}.
-\end{displaymath}
-A \emph{relation} is a subset of the product of sets, which is written as $R \subseteq X \times Y$. A \emph{function} relates an input to an output. Functions are denoted by a small ``$f$'' followed by its input. A simple example of this would be $f(x) = x^2$. Using the variable x for when $x=4$ the function will therefore be, $f(x) = 16$.
-
-
 
 \section{SAT}
 \label{sec:SAT}
@@ -379,9 +461,9 @@ $p$ & $\neg p$\\ \hline
 \end{tabular}  
 \end{center}
 \begin{center}
-{Figure 4.2.2: negation.}
+\label{Figure:4.2.2}{Figure 4.2.2: negation.}
 \end{center}
-As seen in \emph{Figure 1} the $\neg p$ will always have a value that is opposite $p$.
+As seen in Figure \ref{Figure:4.2.2} the $\neg p$ will always have a value that is opposite $p$.
 The logical \emph{functors} each have a unique output if called upon using a set of Bool elements.
 \begin{center}
 \begin{tabular}{|c|c||c|c|c|c|c|}
@@ -395,7 +477,7 @@ $p$ & $q$ & $p \land q$ & $p \lor q$ & $p \Rightarrow q$ & $p \equiv q$ & $p \op
 \end{tabular}  
 \end{center}
 \begin{center}
-{Figure 4.2.3: Four binary functors.}
+\label{Figure:4.2.3}{Figure 4.2.3: Five binary functors.}
 \end{center}
 The \emph{Conjunction} functor ($\land$) takes two Bool elements from a set $\{0,1\}$ and will return true if the elements of both elements are $1$. If however either one of the two elements or both are $0$, then the Conjunction of the two elements will return $0$. The \emph{Disjunction} functor $(\lor)$ takes two Bool elements from a set $\{0,1\}$ and will return a true value if both elements are valued as $1$, or either one of the two elements are equal to $1$. If however neither of the two elements are equal to $1$, then the Disjunction will return $0$. The \emph{Implication} functor $(\Rightarrow)$ takes two Bool from a set $\{0,1\}$ and will return true if both elements are equal to $1$, both elements are equal to $0$ or the first element is $0$ and the second element is $1$, as this says that false implies true which is true. However the implication functor will return true if the elements assignments are for the first element $1$ and the second is $0$, as this implies that truth implies false which is false. \emph{Equivalence} functor takes two Bool elements from a set $\{0,1\}$ and will return true if the elements assignments are both either $1$ or $0$. However, if one of the two elements is $1$ while the other is $0$, then the equivelance of the two elements will evaluate to $0$. 
 
@@ -634,6 +716,7 @@ The OKlibrary will be used to run DES algorithms in CNF form in order to try and
 
 
 \section{ \LaTeX}
+\label{sec:LaTeX}
 The program LaTeX will be used in order to produce a clear and formatted research paper. \LaTeX\space is a document preparation system, used for research papers and alike. It is generally the case that the longer the project is in say the application “Microsoft Word”, the harder it is to keep track of the different elements that get moved around and the formatting. \LaTeX\space gives the user control over the formatting of the document, which makes it easier for the user to maintain control over the project. \LaTeX\space is not strictly for research papers and can be used for other forms of publishing. The program \LaTeX\space is written in something called the \TeX\space macro language. Coding is required to use the \TeX\space macro language. However the coding is straight forward and easy allowing the majority of people to pick it up quickly.  
 
 \section{Github}
@@ -647,6 +730,65 @@ Git is a program that allows a user to push pull and fork repository's and mainl
 
 \chapter{Evaluation}
 \label{cha:Eval}
+
+\section{Accomplishments and What has been learned}
+(To be completed at the end. Refer to the aims of the project to show what has been attained during the project. For example an understanding of cryptography.)
+
+\section{Time line}
+\begin{tabular}{|c|p{5cm}|}
+\hline
+4th week of first semester & Initial Document \\\hline
+5th week of first semester & Review and reflect the Initial document\\ \hline
+6th week of first semester & Build an understanding of the preliminaries that are going to be used\\ \hline
+7th week of first semester & Complete a comprehensive understanding of Boolean functions with examples\\ \hline
+8th week of first semester & Research Partial assignment and Total assignment \\ \hline
+9th week of first semester & Define and explain CNF and conversion of CNF to clause set logic with use of examples \\ \hline
+10th week of first semester & Explain with examples how partial assignment and total assignment can be used to satisfy a formula\\\hline
+11th week of first semester & Interim Document\\ \hline
+After the January assessments & Presentation at Gregynog\\ \hline
+3rd week of second semester & Take feedback from the presentation to improve areas of the project. Construct a block cipher and make a connection between its properties and DES\\ \hline
+4th week of second semester & Carry out tests on DES via OKlibrary to check the DES satisfiability\\ \hline 
+Before Easter interval & Dissertation outline\\ \hline
+11th week of second semester & Project Demonstration\\ \hline
+11th week of second semester & Complete Dissertation\\ \hline
+\hline
+\end{tabular} 
+
+\subsection{Reflection of Time line}
+(Reflection section only to be complete at the end of the project. Specific aspects of the time line highlighted to show what really happened. The user should be kept interested in why particular things were not complete/ did not meet a deadline/ what went well and why. Evaluate each week if possible.)
+
+\section{Risk Analysis}
+Risk analysis looks at what things can go wrong internally or externally that would cause the project to either not be complete or cause problems with the time-line thus causing a decrease in the projects quality.
+\newline
+
+\textbf{Unrealistic planning} \newline
+Poor management of time or not keeping up to date with the time-lines deadlines could cause a major delay on the progress on what will be achieved. This would likely cause the project to be rushed and see a decrease in the quality of work produced. The way around this would be to either have a detailed plan with a breakdown of what needs to be done with each attempt to modify the project. This will ensure time management is used as efficiently as possible. \newline
+
+\textbf{Illness} \newline
+If I was to come down ill with some sort of illness or injury, this can potentially halt the project, as being too ill to work would be a major issue. Sometimes illness cannot be helped, however steps should be put in place to make sure should this happen, then the project can remain on schedule. This would be down to detailed planning of the project.\newline
+
+
+\textbf{Unambiguous Aims}\newline
+In the initial document, the aims of the project are there for goals to be achieved as part of the success of the project. However some aims may not be achievable due to restricted resources or time.
+To make sure this does not happen, a review of the resources needed can be made to prevent this from happening, or some possible aims which are similar can be dropped and covered by other aims. More importantly this paper is a theoretical based, and therefore the aims are not permanently set, as a detailed look at a topic can open up opportunity's to study many different areas. If aims were set to be very specific about one topic then it is possible to over complicate the aims. This means that some aims may not be achievable as some theoretical proofs may not be determinable. As a result the aims must be slightly open, to allow the compensation of a new direction to be looked at.\newline
+
+
+\textbf{Human error}\newline
+Human error can occur at any time and can happen to anyone. The results of this can range from small annoyances to major problems. An example of this would be writing down an algorithm wrong and then submitting it into the OKlibrary program, resulting in possible wrong or void results, compromising the integrity of the project. To resolve this, work must be double checked and time must be given to review said work.\newline
+
+\textbf{Understanding of software}\newline
+Learning how a program works and how to fully make use of its operations takes time to learn and understand. Even after a long time spent, one may not fully understand it. As a result coming to terms with how to use some of the software outlines in the software application for example the OKlibrary could cause a major set back in both time and opportunity cost. 
+
+\subsection{Review of Risk Analysis}
+(To be completed at the end. Review risks and how they had an impact on the aims of the project with relation to the time line.)
+
+\section{Further Work}
+(To be completed at the end. Evaluates possible improvements that can be made. If there was something that was discovered but not looked into discuss it. What this work has opened doors to research into.)
+
+\section{Conclusion}
+(To be completed at the end. Stress the importance of the thesis statement, give the paper a sense of completeness, and
+leave a final impression on the reader. Do not introduce anything new that has not already been said.)
+
 
 \bibliographystyle{plain}
 \nocite{*}
