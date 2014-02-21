@@ -9,7 +9,8 @@
 \usepackage{amssymb}
 \usepackage{latexsym}
 \usepackage{fancyhdr}
-
+\usepackage{float}
+\usepackage{subfig}
 
 
 
@@ -33,7 +34,7 @@ Encrypting messages and decrypting messages has held an interest with me along w
 The project will be focused on constructing an understanding of the Data Encryption Standard (DES), where one is able to encrypt messages and decrypt a message via a key. The second part of the project is to study SAT to gain an understanding of the subject so it can then start to be linked into the attacking of DES. Additionally the DES should be applied and developed into a Conjunctive Normal Form.
 The aims of the project should be left open throughout the different stages of the project as this is a theoretical paper. Discoveries through the paper may open up other areas of interest that one could look deeper into these topics that arise.
 
-\noindent The aims of the project:
+The aims of the project:
 
 \begin{enumerate}
 \item Research and study the Data Encryption Standard.
@@ -49,10 +50,9 @@ The aims of the project should be left open throughout the different stages of t
 The main aim of the project has already been declared, but there are additional objectives which must be taken into account when writing the research paper. 
 \begin{enumerate}
 \item Learn and use the software \LaTeX \space to write the dissertation.
-\item Install and understand how to use git and github, to keep track of the progress of the project with the supervisor.
+\item Install and understand how to use Git and Github, to keep track of the progress of the project with the supervisor.
 \end{enumerate}
 \LaTeX \space is a writing environment which gives the user more control when constructing a paper over more popular software such as Microsoft Word. A detailed analysis of the advantages of using such a software can be found in \ref{sec:LaTeX}.
-
 Github is a file sharing hosting service which allows one or more person to work on a project on their own machines. A detailed description of Github can be found in \ref{sec:Git}
 
 \section{Related Work}
@@ -64,45 +64,47 @@ Other work such as Logical Cryptanalysis as a SAT Problem \cite{Fabio2000Logical
 
 There are other cryptanalysis techniques which include differential cryptanalysis. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based up having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$. 
 
-
-
 \chapter{Analytical Background}
 \label{cha:AnBack}
 The analytical background will first describe the terminology used throughout this paper. This gives students that are new to the area of cryptology an understanding of what some of the words are defined as.
 
 \section{Terminology}
 \label{sec:Term}
-A description of the definitions to impose a level of abstraction. \newline
+A description of the definitions to impose a level of abstraction.
 
-\textbf{Cryptography}\newline
-The study of encryption and decryption to keeping secrets a secret \cite{DBLP:series/isc/DelfsK07}.\newline
+\paragraph{Cryptography}
+The study of encryption and decryption to keeping secrets a secret \cite{DBLP:series/isc/DelfsK07}.
 
-\textbf{Encryption}\newline
-The process of transforming a sequence of bits into another sequence of bits with certain properties \cite{Fabio2000LogicalSAT}.\newline
+\paragraph{Cryptography}
+The study of encryption and decryption to keeping secrets a secret \cite{DBLP:series/isc/DelfsK07}.
+
+\paragraph{Encryption}
+The process of transforming a sequence of bits into another sequence of bits with certain properties \cite{Fabio2000LogicalSAT}.
  
-\textbf{ Decryption} \newline
-The process of mapping back the cipher text into the plain text with the use of a key \cite{Fabio2000LogicalSAT}. \newline
+\paragraph{Decryption}
+The process of mapping back the cipher text into the plain text with the use of a key \cite{Fabio2000LogicalSAT}.
 
-\textbf{Cryptanalysis}\newline
-The science of studying attacks against cryptographic schemes. Successful attacks may, for example, recover plain text (or parts of the plain text) from the cipher text \cite{DBLP:books/sp/Buchmann02}. \newline
+\paragraph{Cryptanalysis}
+The science of studying attacks against cryptographic schemes. Successful attacks may, for example, recover plain text (or parts of the plain text) from the cipher text \cite{DBLP:books/sp/Buchmann02}.
 
-\textbf{Plain text}\newline
-A message that holds meaning to the user that is to be transmitted \cite{DBLP:books/sp/Buchmann02}. \newline
+\paragraph{Plain text}
+A message that holds meaning to the user that is to be transmitted \cite{DBLP:books/sp/Buchmann02}.
 
-\textbf{Cipher text}\newline The result of encryption performed on a plain text using an algorithm \cite{Berti2003CISSP}.\newline
+\paragraph{Cipher text}
+The result of encryption performed on a plain text using an algorithm \cite{Berti2003CISSP}.
 
-\textbf{Key}\newline
-A Key is used to encrypt and decrypt a message \cite{Berti2003CISSP}. \newline
+\paragraph{Key}
+A Key is used to encrypt and decrypt a message \cite{Berti2003CISSP}. 
 
-\textbf{Boolean functions}\newline
-A logical operation were each operands will take the result of one of two values \cite{Gregory2013Cryptanalysis}. \newline
+\paragraph{Boolean functions}
+A logical operation were each operands will take the result of one of two values \cite{Gregory2013Cryptanalysis}.
 
-\textbf{Intervertebral function}\newline
+\paragraph{Intervertebral function}
 An intervertebral function allows you to carry out the
 same process from getting state 1 to state 2. As a result the same process
-allows us to get from state 2 to state 1. \newline
+allows us to get from state 2 to state 1.
 
-\textbf{Permutation}\newline
+\paragraph{Permutation}
 Given D is a set, a \emph{permutation} of D is a bijective mapping of 
 \begin{displaymath}
 F: D \rightarrow D
@@ -128,7 +130,7 @@ D$_{K}$ = Decryption Key \newline
 \section{General Cryptography}
 \label{sec:GenCrypt}
 Cryptography is the study of encryption and decryption to keep data a secret \cite{DBLP:series/isc/DelfsK07}. It has been around for centuries with one of the first examples being the “Caesar cipher” which was used around 40BC. This is probably one of the more famous examples of encryption.
-Encryption is important because people have secrets and want to keep the information they are transmitting hidden from people who would manage to intercept the message. If we say for example “Bob” want to send a message “x” to “Alice”. If this message is sent to Alice without any encryption and it is intercepted by say “Eve”, then eve is able to read said message “x”, thus no longer making “x” a secret. However encryption can help keep “Bobs” message a secret from “Eve”. This is done by at the most basic level, applying an encryption method to the message to produce a cipher text. The cipher text can then be passed on to “Alice”. If the message “x” is intercepted by “Eve”, then the message will be incoherent to read. This is because the encryption will have changed the message on the plain text into something new which no longer resembles the original message. Once “Alice” has the cipher text, she can now apply a decryption method to the cipher text to read the original message. It is important to note that “Alice” is able to decrypt the cipher text by using a key that both parties will have agreed on before the transmission of a message “x”. This in essence is how encryption and decryption is used. \newline
+Encryption is important because people have secrets and want to keep the information they are transmitting hidden from people who would manage to intercept the message. If we say for example “Bob” wants to send a message “x” to “Alice”. If this message is sent to Alice without any encryption and it is intercepted by say “Eve”, then "Eve" is able to read said message “x”, thus no longer making “x” a secret. However encryption can help keep “Bobs” message a secret from “Eve”. This is done by at the most basic level, applying an encryption method to the message to produce a cipher text. The cipher text can then be passed on to “Alice”. If the message “x” is intercepted by “Eve”, then the message will be incoherent to read. This is because the encryption will have changed the message on the Plain text into something new which no longer resembles the original message. Once “Alice” has the cipher text, she can now apply a decryption method to the cipher text to read the original message. It is important to note that “Alice” is able to decrypt the cipher text by using a key that both parties will have agreed on before the transmission of a message “x”. This in essence is how encryption and decryption is used. 
 
 \textbf{Encryption notation}
 \begin{displaymath}
@@ -140,12 +142,10 @@ The notation for encryption shows that putting the Key and the Plain text into t
 \begin{displaymath}
 P = D (K, C)
 \end{displaymath}
-The notation for decrypting shows that putting the Cipher text and key together in the decryption algorithm will output a Cipher text.\newline
+The notation for decrypting shows that putting the Cipher text and key together in the decryption algorithm will output a Cipher text.
 
 \textbf{Symmetric and asymmetric encryption}\newline
-Symmetric-key encryption schemes provide secure communication for a pair of communication partners \cite{DBLP:series/isc/DelfsK07}. Symmetric-key encryption algorithms have the fastest implementations in hardware and software. Therefore, they are very well-suited to the encryption of large amounts of data \cite{DBLP:series/isc/DelfsK07}. In symmetric encryption the encryption key will always be the same as the decryption key. We there for say within asymmetric encryption that E$_{K}$ = D$_{K}$. This is seen and proven in the encryption and decryption notation as both P and C can be interchanged to produce either the Plain text or Cipher text respectively.In asymmetric encryption the encryption key and decryption key are unique and the computation of decryption from encryption is infeasible. Compared to symmetric encryption, the asymmetric encryption key can be made public \cite{DBLP:series/isc/DelfsK07}. However the decryption key is still kept a secret. Because
-8
-anyone can use the encryption key it is called the “public” key. For a public key it is useful to have two different key spaces since the public key and the private key are shaped differently \cite{DBLP:series/isc/DelfsK07}.\newline
+Symmetric-key encryption schemes provide secure communication for a pair of communication partners \cite{DBLP:series/isc/DelfsK07}. Symmetric-key encryption algorithms have the fastest implementations in hardware and software. Therefore, they are very well-suited to the encryption of large amounts of data \cite{DBLP:series/isc/DelfsK07}. In symmetric encryption the encryption key will always be the same as the decryption key. We there for say within asymmetric encryption that E$_{K}$ = D$_{K}$. This is seen and proven in the encryption and decryption notation as both P and C can be interchanged to produce either the Plain text or Cipher text respectively.In asymmetric encryption the encryption key and decryption key are unique and the computation of decryption from encryption is infeasible. Compared to symmetric encryption, the asymmetric encryption key can be made public \cite{DBLP:series/isc/DelfsK07}. However the decryption key is still kept a secret. Because anyone can use the encryption key it is called the “public” key. For a public key it is useful to have two different key spaces since the public key and the private key are shaped differently \cite{DBLP:series/isc/DelfsK07}.
 
 \textbf{RSA}\newline
 RSA is named after its inventors Ron Rivest, Adi Shamir and Len Adleman. RSA was the first public-key cryptosystem and is still one of the most important \cite{DBLP:series/isc/DelfsK07}. The most important thing to note about RSA is that it is an asymmetric encryption method and so therefore has a public key and a private key. Both keys however are mathematically linked. The public key is known to everyone and is used to decrypt messages. On the other hand the private key is used to encrypt messages. The general idea behind the encryption of RSA is that the factors of the two generated messages cannot be recovered from $n$. RSA will generate two different random numbers which are odd prime numbers. The product is then taken from these values. A new value (e) is then introduced which is a prime number relative to $n$. The pair (n, e) is then the public key. The decryption is then computed with ne $\equiv$ 1 mod (n). (n,d) is then used as the private key. This is just one of the other possible methods of encryption available.
@@ -194,16 +194,18 @@ A block cipher is defined as a symmetric-key encryption scheme with
  M = C = \{0,1\}^{n}
 \end{displaymath}
  $n$ is the block length of the cipher \cite{DBLP:series/isc/DelfsK07}. Block ciphers are used to encrypt blocks of bits of a fixed length to a new different output \cite{DBLP:books/sp/Buchmann02}. For example if the input length of a block cipher is 8 bits, then the output block cipher will also be 8 bits long. A block cipher is referred to as a cryptosystem if its plain text and cipher text are of the same length.A block cipher will map an original Plain text into a cipher text with the use of permutation. Block ciphers are closely related to binary arithmetic in how to calculate the new values and current values of which will be shown later.
-A block cipher is made up of two algorithms which we will call E and D (Encryption and decryption algorithm). Both of these algorithms take in a key called K.
+A block cipher is made up of two algorithms which we will call E and D (Encryption and decryption algorithm). Both of these algorithms take in a key called K. Given a Plain text (PT) the encryption will take in a key and map both these inputs to an output. This output is the Cipher text (CT). This can be seen in Figure \ref*{fig:2.2.1} 
 
+
+\begin{figure}[H]
+\centering
 \includegraphics[width=12cm, height=5cm]{BlockCipher.png}
+\caption{Illustration of a block cipher.}
+\label{fig:2.2.1}
+\end{figure}
 
-\noindent PT Block = Plain text \newline
-CT Block = Cipher text \newline
 
-\begin{center}
-figure 2.2.1\label{Fig:2.2.1}: Illustration of a block cipher.
-\end{center}
+
 The reason block ciphers are useful is that it takes in $n$ inputs and outputs $n$. Block ciphers are built by iteration were they take in as an input a key K. The key K will then be expanded into $K_{1}, K_{2},..., K_{n}$. These are called \emph{round keys}. The cipher will use these round keys by encrypting the message a number of times. So the encryption would work by taking producing a new message with each computation of th message and a key $R: (K_{1}, M)$ respectively. This will produce a message ($m_{1}$) were it will go through the same process with a different key until all the round keys are computed. Once all the rounds are complete one is left with C.
 
 Block ciphers can encrypt messages of arbitrary length. There are different properties and issues that must be looked at regarding the different lengths. First we look at where the plain text is greater than the cipher text (P $\textless$ C). This essentially means that our input is grater than our output. Practically this does not make sense as there will be a lose of data within the cipher text. However an alternative view would be that error checking was in the plain text , so therefore they were parity bits. In this regard this arbitrary block cipher would be acceptable. 
@@ -212,7 +214,17 @@ An alternative block cipher encryption would be if the plain text contains less 
 
 The security of an encryption is determined by its key. Specifically the more key iterations a encryption has, the more secure/ harder it will be to break. A encryption with only one key will encrypt a plain text once. This is less effective in terms of security compared to a plain text that uses more keys. This is due to the fact that the randomness of the cipher text increases.
 
-Weak keys in cryptography are keys which when used with a plain text will result in a cipher text with specific properties. These properties are unfavourable. It should be noted that weak keys are rare due to the amount of keys available to encrypt a message, but do raise a major flaw in the security of a message.  As a result it is often attempted to reduce the chance of obtaining a weak key. An example of a weak key would be if all the bits are alternating 0's and 1's. 
+\emph{Weak keys} in cryptography are keys which when used with a plain text will result in a cipher text with specific properties. These properties are unfavourable as it leads to a security problem. It should be noted that weak keys are rare due to the amount of keys available to encrypt a message, but do raise a major flaw in the security of a message. As a result it is often attempted to reduce the chance of obtaining a weak key. An example of a weak key would be if all the bits are all 1's, 0's or alternating 0's and 1's. The consequence of using a weak key to encrypt a block cipher and then encrypt the result with the same weak key, we will obtain the original block cipher. 
+
+
+
+
+
+
+
+
+
+
 
 There are "basic properties" given with keys to show that keys will always map to different outputs. In other words, if we are given two different keys, there exists a mapping for each key such that there will always be a different output (never both map to the same value). In other words, encryption key 1 (E$_{K1}$) is not equal to encryption key 2 (E$_{K2}$) in terms of mapping to the same cipher text (C).
 \begin{displaymath}
@@ -221,38 +233,80 @@ E_{K1} \neq E_{K2} \rightarrow C
 An example of this would be given a plain text of 1 bit in length that is assigned to binary value 1 and two keys each one bit in length where E$_{K1}$ is assigned to 0 and another key E$_{K2}$ is assigned 1. In the example given below, we are looking for two cipher texts not to be equal.
 
 A toy example of this strong property would be:
-\begin{center}
-\begin{tabular}{|c|c|c|c|}
+
+\begin{figure}[H]
+\centering
+\label{tab:assignment of values}
+\begin{tabular}{|c|c|c|c|} 
 \hline
 P & E$_{K1}$ & E$_{K2}$ & C \\ \hline
 1 & 0 & 1 & {}\\ 
 \hline
-\end{tabular}  
-\end{center}
-\begin{center}
-Figure 2.2.2\label{Fig: 2.2.2}: Denoting the assignment of values
-\end{center}
-The Cipher text will be the result of using the XOR function (see \ref{Figure:4.2.3}) over the plain text and the E$_{Kx}$ to produce a cipher text C$_x$. The Strong property will hold if both cipher texts are not equal. 
+\end{tabular}
+\caption{Denoting the assignment of values}
+\end{figure}
+The Cipher text will be the result of using the XOR function (see \ref{Figure:4.2.3}) over the plain text and the E$_{Kn}$ to produce a cipher text C$_n$. The Strong property will hold if both cipher texts are not equal. 
 
-
-\begin{center}
+\begin{figure}[H]
+\centering
+\label{tab:XOR function}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 P & E$_{K1}$ & E$_{K2}$ & P $\oplus$ E$_{K1}$ & P $\oplus$ E$_{K2}$\\ \hline
 1 & 0 & 1 & 1 & 0 \\
 \hline
-\end{tabular}  
-\end{center}
-\begin{center}
-Figure 2.2.3\label{Fig: 2.2.3}: XOR function over P and K to produce C  
-\end{center}
+\end{tabular} 
+\caption{XOR function over P and K to produce C.} 
+\end{figure}
+
 The output of P $\oplus$ E$_{K1}$ is equivalent to saying it is cipher text 1 (C$_1$) and P $\oplus$ E$_{K2}$ is equivalent to cipher text 2 (C$_2$). Therefore we have proven that the output C$_1$ $\neq$ C$_2$.  
- As seen in figure \ref{Fig: 2.2.3} two different keys do not map to the same output. As a result this is a "Strong property" of keys which is desirable when looking at the security of a block cipher. 
+ As seen in figure \ref{tab:XOR function} two different keys do not map to the same output. As a result this is a "Strong property" of keys which is desirable when looking at the security of a block cipher. 
  
- 
- 
- 
- 
+ A \emph{Duplicate key} is a key with the same identical property of another key. This property is deriving the same Cipher text. Given two keys and using the domain Plain text \{P\}* which denotes the set of all possible Plain texts, the key will map \{P\}* to the set of all possible Cipher texts \{C\}*. 
+ \begin{displaymath}
+ \{P\}* \rightarrow \{C\}*
+ \end{displaymath}
+ The duplicate key is of such that has the identical mapping. The same mapping is therefore defined by two given tables that are both naturally ordered, if and only if each row in the first table matches the second and each row in the second table matches the first table.   
+ An example of a duplicate key would be given C$_{K1}$(P) which denotes the cipher text using the key K$_1$ from the domain P and C$_{K2}$(P) denotes the cipher text using the key K$_2$ from the domain P where domain P in this case is the same for each Cipher text. 
+
+
+\begin{figure}
+\begin{table}[H]
+\centering
+\label{tab:C1}
+\begin{tabular}{|c|c|c|} 
+\hline
+P & K$_1$ & C$_{K1}$ \\ \hline
+1 & 0 & 1 \\ 
+1 & 0 & 1 \\
+0 & 0 & 0 \\
+0 & 1 & 1 \\
+\hline
+\end{tabular}
+\caption{Plain text being mapped to a Cipher text using K$_1$}
+\end{table}
+
+\begin{table}[H]
+\centering
+\label{tab:C2}
+\begin{tabular}{|c|c|c|} 
+\hline
+P & K$_2$ & C$_{K2}$ \\ \hline
+1 & 0 & 1 \\ 
+1 & 0 & 1 \\
+0 & 0 & 0 \\
+0 & 1 & 1 \\
+\hline
+\end{tabular}
+\caption{Plain text being mapped to a Cipher text using K$_2$}
+\end{table}
+\end{figure}
+
+By our previous hypothesis, if we take each row from table \ref{tab:C1} and table \ref{tab:C2} then we can evaluate them as equal. Therefore K$_1$ and K$_2$ map the same Plain text to the Cipher text. 
+
+\begin{displaymath}
+C_{K1}(P) = C_{K2}(P)
+\end{displaymath}
  
  
  
@@ -272,7 +326,7 @@ The Data Encryption Standard  or DES was developed by the company IBM in 1977 an
 
 \section{Construction of DES}
 \label{sec:conDES}
-The basic algorithm to construct a DES is to use a block cipher which encrypts blocks of 64 bits (Plain text) into blocks of 64 bits (Cipher text) using a key with 56 bits (the key length is actually 64 bits but 8 of those bits are used for parity checking and is otherwise ignored by the algorithm) \cite{Fabio2000LogicalSAT}.\newline
+The basic algorithm to construct a DES is to use a block cipher which encrypts blocks of 64 bits (Plain text) into blocks of 64 bits (Cipher text) using a key with 56 bits (the key length is actually 64 bits but 8 of those bits are used for parity checking and is otherwise ignored by the algorithm) \cite{Fabio2000LogicalSAT}.
 
 
 
@@ -280,7 +334,7 @@ The basic algorithm to construct a DES is to use a block cipher which encrypts b
 \begin{displaymath}
 DES: \{0,1\}^{64} \times \{0,1\}^{56} \rightarrow \{0,1\}^{64}
 \end{displaymath}
-DES is constructed by taking in a 64 bit Plain text, mapping it to an encryption key which is 56 bits long, which will give a 64 bit Cipher text.\newline
+DES is constructed by taking in a 64 bit Plain text, mapping it to an encryption key which is 56 bits long, which will give a 64 bit Cipher text.
 
 \textbf{Feistel Network}\newline
 DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions (see \ref{Figure:4.2.3}) and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
@@ -292,11 +346,12 @@ The aim of the Feistel network is to build up an intervertebral function
 F: \{0,1\}^{2n} \rightarrow \{0,1\}^{2n}
 \end{displaymath}
 This function will then encrypt the message (P). We start off with two separate inputs which we will call R$_{0}$ and L$_{0}$ made up of both n bits. The total input is 2n - bits. At the first stage the R$_{0}$ will become the L$_{1}$ without any change as seen on the diagram below. However the L inputs is changed. This is done by taking the R$_{0}$ input and feeding it into the arbitrary function f$_{1}$, and the result is then XOR with L$_{0}$. This output will then become R$_{1}$ input. This process is called one round of the Feistel network.
-
+\begin{figure}[h]
+\centering
 \includegraphics[width=12cm, height=5cm]{FeistelNet.png}
-\begin{center}
-Figure 3.1: Illustration of a Feistel Network.
-\end{center}
+\label{Fig: Feistel Network}
+\caption{Illustration of a Feistel Network.}
+\end{figure}
 
 This process is carried out until 16 rounds have occurred, which will produce the cipher text. Each round is nearly identical except for the keys, as for each round there is a different subset of 56
 key bits that are selected and combined with the input of the previous round \cite{Fabio2000LogicalSAT}. 
@@ -320,7 +375,7 @@ The demonstration will outline how first of all the code is generated and how th
 \begin{displaymath}
 M = ABCDEF0123456789
 \end{displaymath}
-We would rewrite this in a binary format to get our 64 bit plain text. In a table this would look like: \newline
+We would rewrite this in a binary format to get our 64 bit plain text. In a table this would look like:
 
 \begin{center}
 \begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
@@ -378,9 +433,9 @@ IP(_{p}) = p_{47}, p_{23}, p_{52},...,p_{3}
 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\ \hline
 \end{tabular}
 \end{center}
-The new mapping of IP gives us Table(a). We can then apply a key to this table to produce our first round table.\newline
+The new mapping of IP gives us Table(a). We can then apply a key to this table to produce our first round table.
 
-\noindent \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
 K = & 0001 & 0011 & 0011 & 0100 & 0101 & 0111 & 0111 & 1001 
 \\ \hline
 \end{tabular} 
@@ -388,7 +443,7 @@ K = & 0001 & 0011 & 0011 & 0100 & 0101 & 0111 & 0111 & 1001
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
 1001 & 1011 & 1011 & 1100 & 1101 & 1111 & 1111 & 0001\\ \hline
-\end{tabular}\newline
+\end{tabular}
 \end{center}
 We then will compute the XOR as stated by the Feistel network. So as a result the R$_{0}$ will become R$_{1}$ which will be computed on the next round.
 
@@ -400,26 +455,26 @@ C$_{0}$ & 1111 & 0000 & 1100 & 1100 & 1010 & 1010 & 1111\\ \hline
 D$_{0}$ & 0101 & 0101 & 0110 & 0110 & 0111 & 1000 & 1111\\ \hline
 C$_{1}$ & 1110 & 0001 & 1001 & 1001 & 0101 & 0101 & 1111\\ \hline
 D$_{1}$ & 1010 & 1010 & 1001 & 1001 & 1110 & 0011 & 1110\\ \hline
-\end{tabular}\newline
+\end{tabular}
 \end{center}
 
-Using the key one would XOR C$_{1}$ and D$_{1}$ and will get:
+Using the key one would XOR both C$_{1}$ and D$_{1}$ and will get:
 
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}\hline
 K$_{1}$ & 0001 & 1011 & 0000 & 0010 & 1110 & 1111 & 1111 & 1100 & 0111 & 0000 & 0111 & 0010\\ \hline
-\end{tabular}\newline
+\end{tabular}
 \end{center}
 
-The next step is to use the key to obtain\newline
+The next step is to use the key to obtain
 
-\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+\begin{tabular}{|c|c|c|c|c|}\hline
 $E(R_{0}) \oplus K_{1}$ & 0110 & 0001 & 0001 & 0111\\ \hline
 \end{tabular}
 
 \indent \begin{tabular}{|c|c||c|c|c|c|c|c|}\hline
 1011 & 1010 & 0000 & 1100 & 1001 & 0101 & 0010 & 0111\\ \hline
-\end{tabular}\newline
+\end{tabular}
 
 Therefore R$_{1}$ = 6117BA0CD27
 
@@ -451,19 +506,21 @@ Boolean logic is referred to as two valued logic. This is because two values are
 \end{displaymath}
 
 The arguments for the Bool algebra operations can be shown in truth tables. A truth table computes the logical values that are given to their corresponding value over a given operation. An example of this would be the negation of $p$ which would be $\neg p$. 
-\begin{center}
-\begin{tabular}{|c|c|c|}
+
+\begin{figure}[H]
+\centering
+\label{tab:negation}
+\begin{tabular}{|c|c|}
 \hline
 $p$ & $\neg p$\\ \hline
 0 & 1 \\
 1 & 0 \\ 
 \hline
 \end{tabular}  
-\end{center}
-\begin{center}
-\label{Figure:4.2.2}{Figure 4.2.2: negation.}
-\end{center}
-As seen in Figure \ref{Figure:4.2.2} the $\neg p$ will always have a value that is opposite $p$.
+\caption{Negation.}
+\end{figure}
+
+As seen in Figure \ref{tab:negation} the $\neg p$ will always have a value that is opposite $p$.
 The logical \emph{functors} each have a unique output if called upon using a set of Bool elements.
 \begin{center}
 \begin{tabular}{|c|c||c|c|c|c|c|}
@@ -735,6 +792,7 @@ Git is a program that allows a user to push pull and fork repository's and mainl
 (To be completed at the end. Refer to the aims of the project to show what has been attained during the project. For example an understanding of cryptography.)
 
 \section{Time line}
+\begin{center}
 \begin{tabular}{|c|p{5cm}|}
 \hline
 4th week of first semester & Initial Document \\\hline
@@ -753,28 +811,29 @@ Before Easter interval & Dissertation outline\\ \hline
 11th week of second semester & Complete Dissertation\\ \hline
 \hline
 \end{tabular} 
+\end{center}
 
 \subsection{Reflection of Time line}
 (Reflection section only to be complete at the end of the project. Specific aspects of the time line highlighted to show what really happened. The user should be kept interested in why particular things were not complete/ did not meet a deadline/ what went well and why. Evaluate each week if possible.)
 
 \section{Risk Analysis}
 Risk analysis looks at what things can go wrong internally or externally that would cause the project to either not be complete or cause problems with the time-line thus causing a decrease in the projects quality.
-\newline
+
 
 \textbf{Unrealistic planning} \newline
-Poor management of time or not keeping up to date with the time-lines deadlines could cause a major delay on the progress on what will be achieved. This would likely cause the project to be rushed and see a decrease in the quality of work produced. The way around this would be to either have a detailed plan with a breakdown of what needs to be done with each attempt to modify the project. This will ensure time management is used as efficiently as possible. \newline
+Poor management of time or not keeping up to date with the time-lines deadlines could cause a major delay on the progress on what will be achieved. This would likely cause the project to be rushed and see a decrease in the quality of work produced. The way around this would be to either have a detailed plan with a breakdown of what needs to be done with each attempt to modify the project. This will ensure time management is used as efficiently as possible. 
 
 \textbf{Illness} \newline
-If I was to come down ill with some sort of illness or injury, this can potentially halt the project, as being too ill to work would be a major issue. Sometimes illness cannot be helped, however steps should be put in place to make sure should this happen, then the project can remain on schedule. This would be down to detailed planning of the project.\newline
+If I was to come down ill with some sort of illness or injury, this can potentially halt the project, as being too ill to work would be a major issue. Sometimes illness cannot be helped, however steps should be put in place to make sure should this happen, then the project can remain on schedule. This would be down to detailed planning of the project.
 
 
 \textbf{Unambiguous Aims}\newline
 In the initial document, the aims of the project are there for goals to be achieved as part of the success of the project. However some aims may not be achievable due to restricted resources or time.
-To make sure this does not happen, a review of the resources needed can be made to prevent this from happening, or some possible aims which are similar can be dropped and covered by other aims. More importantly this paper is a theoretical based, and therefore the aims are not permanently set, as a detailed look at a topic can open up opportunity's to study many different areas. If aims were set to be very specific about one topic then it is possible to over complicate the aims. This means that some aims may not be achievable as some theoretical proofs may not be determinable. As a result the aims must be slightly open, to allow the compensation of a new direction to be looked at.\newline
+To make sure this does not happen, a review of the resources needed can be made to prevent this from happening, or some possible aims which are similar can be dropped and covered by other aims. More importantly this paper is a theoretical based, and therefore the aims are not permanently set, as a detailed look at a topic can open up opportunity's to study many different areas. If aims were set to be very specific about one topic then it is possible to over complicate the aims. This means that some aims may not be achievable as some theoretical proofs may not be determinable. As a result the aims must be slightly open, to allow the compensation of a new direction to be looked at.
 
 
 \textbf{Human error}\newline
-Human error can occur at any time and can happen to anyone. The results of this can range from small annoyances to major problems. An example of this would be writing down an algorithm wrong and then submitting it into the OKlibrary program, resulting in possible wrong or void results, compromising the integrity of the project. To resolve this, work must be double checked and time must be given to review said work.\newline
+Human error can occur at any time and can happen to anyone. The results of this can range from small annoyances to major problems. An example of this would be writing down an algorithm wrong and then submitting it into the OKlibrary program, resulting in possible wrong or void results, compromising the integrity of the project. To resolve this, work must be double checked and time must be given to review said work.
 
 \textbf{Understanding of software}\newline
 Learning how a program works and how to fully make use of its operations takes time to learn and understand. Even after a long time spent, one may not fully understand it. As a result coming to terms with how to use some of the software outlines in the software application for example the OKlibrary could cause a major set back in both time and opportunity cost. 
