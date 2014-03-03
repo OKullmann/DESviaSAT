@@ -386,6 +386,7 @@ The cipher text is then constructed using inverse permutation IP$^{-1}$:
 C = IP^{-1}(R_{16}L_{16})
 \end{displaymath}
 
+
 \subsection{Demonstration of DES}
 \label{subsec: DemoDES}
 
@@ -502,7 +503,9 @@ If there was only one wound of function keys then R$_{1}$ would be the output wh
 R_{1} = C
 \end{displaymath}
 
-\chapter{Preliminaries}
+
+
+\chapter{Propositional Logic}
 \label{cha:prelim}
 
 \section{SAT}
@@ -688,8 +691,10 @@ f(\varphi) = (1 \lor 1 \lor 1)
 \end{displaymath}
 Using the basic binary functor \emph{disjunction} (see Figure 4.2.3) we can now see that the formula will be satisfiable as the whole formula will evaluate to $1$.
 
-\chapter{Applying DES to SAT}
-\label{cha:AppDESSAT}
+
+
+\chapter{Direct translations of (toy) block ciphers to SAT}
+\label{cha:dirtrans}
 
 For combining the two areas, we will consider block ciphers which we will call b. As stated before, we have the three elements of P, C and K. We then must consider the main processes of these elements which is to encrypt and decrypt using the formulas
 
@@ -769,6 +774,12 @@ The CNF clauses for the table constructed with an output would be:
 (P_{1} \lor K_{1} \lor \neg C_{1}) \land (\neg P_{1} \lor K_{1} \lor C_{1}) \land (P_{1} \lor \neg K_{1} \lor \neg C_{1}) \land (\neg P_{1} \lor \neg K_{1} \lor C_{1})
 \end{displaymath}
 This means we have constructed a CNF out of using the values from P, K, C via the use of SAT.
+
+
+
+
+\chapter{Translating DES to SAT}
+\label{cha:AppDESSAT}
 
 
 
