@@ -27,10 +27,14 @@
 
 \section{Motivation}
 \label{cha:Motivation}
+
 Encrypting messages and decrypting messages has held an interest with me along with the secrecy surrounded by cryptology. The main thing that fascinates me about encryption is that pieces of text can be transformed into illegible messages and then back again with the use of a key. This project will be an accomplishment if i can outline existing documentation to build a theoretical framework to translate DES to SAT. This will make it easier to understand the concepts needed to break DES. Once I have this framework of knowledge, it will be able to guide me through the process of breaking DES with the use of experiments. I hope this will be useful to other researchers in closely related fields as they will be able to use some of the methods, explanations for their work or help explain to students DES and its link with SAT. 
+
+
 
 \section{Aims of the project}
 \label{cha:Aims}
+
 The project will be focused on constructing an understanding of the Data Encryption Standard (DES), where one is able to encrypt messages and decrypt a message via a key. The second part of the project is to study SAT to gain an understanding of the subject so it can then start to be linked into the attacking of DES. Additionally the DES should be applied and developed into a Conjunctive Normal Form.
 The aims of the project should be left open throughout the different stages of the project as this is a theoretical paper. Discoveries through the paper may open up other areas of interest that one could look deeper into these topics that arise.
 
@@ -45,6 +49,7 @@ The aims of the project:
 \item Show the improvement of the existing facilities with the use of experiments.
 \end{enumerate}
 
+
 \section{Science engineering}
 \label{sec:sciEng}
 The main aim of the project has already been declared, but there are additional objectives which must be taken into account when writing the research paper. 
@@ -55,8 +60,11 @@ The main aim of the project has already been declared, but there are additional 
 \LaTeX \space is a writing environment which gives the user more control when constructing a paper over more popular software such as Microsoft Word. A detailed analysis of the advantages of using such a software can be found in \ref{sec:LaTeX}.
 Github is a file sharing hosting service which allows one or more person to work on a project on their own machines. A detailed description of Github can be found in \ref{sec:Git}
 
+
+
 \section{Related Work}
 \label{cha:RWork}
+
 There have been some published papers which are similar to the topic area, but not many. A basic understanding and framework can be taken from these papers to develop a well designed structure to the projects work.
 
 The interaction between Propositional Satisfiability and Applications in Cryptography and Ramsey Problems \cite{Gwynne2010Interaction} is a recently published thesis that looks at a different encryption standard called Advanced Encryption Standard (AES). The paper first of all outlines and declares what Boolean functions are and SAT. The thesis paper goes into depth of how the AES works by giving a very detailed explanation along with examples of how it is runs. Then there is a translation of AES into SAT with the use of Conjunctive Normal Form (CNF). The framework within the thesis provided a translation of satisfiability theorems to be used in encryption. A lot of the work talks about breaking AES which is a successor of DES. However techniques used to break AES can be adopted and will be closely linked to DES. 
@@ -64,9 +72,14 @@ Other work such as Logical Cryptanalysis as a SAT Problem \cite{Fabio2000Logical
 
 There are other cryptanalysis techniques which include differential cryptanalysis. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based up having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$. 
 
+
+
+
 \chapter{Analytical Background}
 \label{cha:AnBack}
+
 The analytical background will first describe the terminology used throughout this paper. This gives students that are new to the area of cryptology an understanding of what some of the words are defined as.
+
 
 \section{Terminology}
 \label{sec:Term}
