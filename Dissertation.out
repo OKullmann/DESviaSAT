@@ -3,37 +3,36 @@
 \BOOKMARK [1][-]{section.1.2}{Aims of the project}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.3}{Science engineering}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.4}{Related Work}{chapter.1}% 5
-\BOOKMARK [0][-]{chapter.2}{Analytical Background}{}% 6
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 6
 \BOOKMARK [1][-]{section.2.1}{Terminology}{chapter.2}% 7
 \BOOKMARK [1][-]{section.2.2}{General Cryptography}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.3}{Sets}{chapter.2}% 9
-\BOOKMARK [2][-]{subsection.2.3.1}{The four basic operations}{section.2.3}% 10
-\BOOKMARK [0][-]{chapter.3}{Block Ciphers}{}% 11
-\BOOKMARK [0][-]{chapter.4}{The Data Encryption Standard}{}% 12
-\BOOKMARK [1][-]{section.4.1}{Construction of DES}{chapter.4}% 13
-\BOOKMARK [2][-]{subsection.4.1.1}{Demonstration of DES}{section.4.1}% 14
-\BOOKMARK [0][-]{chapter.5}{Propositional Logic}{}% 15
-\BOOKMARK [1][-]{section.5.1}{SAT}{chapter.5}% 16
-\BOOKMARK [2][-]{subsection.5.1.1}{Syntax and semantics for propositional logic}{section.5.1}% 17
-\BOOKMARK [2][-]{subsection.5.1.2}{Boolean logic}{section.5.1}% 18
-\BOOKMARK [2][-]{subsection.5.1.3}{Partial Assignment and Total Assignment}{section.5.1}% 19
-\BOOKMARK [2][-]{subsection.5.1.4}{Example of Partial Assignment}{section.5.1}% 20
-\BOOKMARK [1][-]{section.5.2}{Conjunctive Normal Form}{chapter.5}% 21
-\BOOKMARK [2][-]{subsection.5.2.1}{Converting CNF to clause set logic}{section.5.2}% 22
-\BOOKMARK [2][-]{subsection.5.2.2}{Example of a formula being satisfiable}{section.5.2}% 23
-\BOOKMARK [0][-]{chapter.6}{Direct translations of \(toy\) block ciphers to SAT}{}% 24
-\BOOKMARK [1][-]{section.6.1}{Example of DES via SAT }{chapter.6}% 25
-\BOOKMARK [0][-]{chapter.7}{Translating DES to SAT}{}% 26
-\BOOKMARK [0][-]{chapter.8}{Software Applications}{}% 27
-\BOOKMARK [1][-]{section.8.1}{OKlibrary}{chapter.8}% 28
-\BOOKMARK [1][-]{section.8.2}{ LaTeX}{chapter.8}% 29
-\BOOKMARK [1][-]{section.8.3}{Github}{chapter.8}% 30
-\BOOKMARK [0][-]{chapter.9}{Computing DES through SAT}{}% 31
-\BOOKMARK [0][-]{chapter.10}{Evaluation}{}% 32
-\BOOKMARK [1][-]{section.10.1}{Accomplishments and What has been learned}{chapter.10}% 33
-\BOOKMARK [1][-]{section.10.2}{Time line}{chapter.10}% 34
-\BOOKMARK [2][-]{subsection.10.2.1}{Reflection of Time line}{section.10.2}% 35
-\BOOKMARK [1][-]{section.10.3}{Risk Analysis}{chapter.10}% 36
-\BOOKMARK [2][-]{subsection.10.3.1}{Review of Risk Analysis}{section.10.3}% 37
-\BOOKMARK [1][-]{section.10.4}{Further Work}{chapter.10}% 38
-\BOOKMARK [1][-]{section.10.5}{Conclusion}{chapter.10}% 39
+\BOOKMARK [1][-]{section.2.3}{Block Ciphers}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.4}{Sets}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.4.1}{The four basic operations}{section.2.4}% 11
+\BOOKMARK [0][-]{chapter.3}{The Data Encryption Standard}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Construction of DES}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.1.1}{Demonstration of DES}{section.3.1}% 14
+\BOOKMARK [0][-]{chapter.4}{Propositional Logic}{}% 15
+\BOOKMARK [1][-]{section.4.1}{SAT}{chapter.4}% 16
+\BOOKMARK [2][-]{subsection.4.1.1}{Syntax and semantics for propositional logic}{section.4.1}% 17
+\BOOKMARK [2][-]{subsection.4.1.2}{Boolean logic}{section.4.1}% 18
+\BOOKMARK [2][-]{subsection.4.1.3}{Partial Assignment and Total Assignment}{section.4.1}% 19
+\BOOKMARK [2][-]{subsection.4.1.4}{Example of Partial Assignment}{section.4.1}% 20
+\BOOKMARK [1][-]{section.4.2}{Conjunctive Normal Form}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.2.1}{Converting CNF to clause set logic}{section.4.2}% 22
+\BOOKMARK [2][-]{subsection.4.2.2}{Example of a formula being satisfiable}{section.4.2}% 23
+\BOOKMARK [0][-]{chapter.5}{Direct translations of \(toy\) block ciphers to SAT}{}% 24
+\BOOKMARK [1][-]{section.5.1}{Example of DES via SAT }{chapter.5}% 25
+\BOOKMARK [0][-]{chapter.6}{Translating DES to SAT}{}% 26
+\BOOKMARK [0][-]{chapter.7}{Software Applications}{}% 27
+\BOOKMARK [1][-]{section.7.1}{OKlibrary}{chapter.7}% 28
+\BOOKMARK [1][-]{section.7.2}{ LaTeX}{chapter.7}% 29
+\BOOKMARK [1][-]{section.7.3}{Github}{chapter.7}% 30
+\BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 31
+\BOOKMARK [1][-]{section.8.1}{Accomplishments and What has been learned}{chapter.8}% 32
+\BOOKMARK [1][-]{section.8.2}{Time line}{chapter.8}% 33
+\BOOKMARK [2][-]{subsection.8.2.1}{Reflection of Time line}{section.8.2}% 34
+\BOOKMARK [1][-]{section.8.3}{Risk Analysis}{chapter.8}% 35
+\BOOKMARK [2][-]{subsection.8.3.1}{Review of Risk Analysis}{section.8.3}% 36
+\BOOKMARK [1][-]{section.8.4}{Further Work}{chapter.8}% 37
+\BOOKMARK [1][-]{section.8.5}{Conclusion}{chapter.8}% 38
