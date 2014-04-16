@@ -25,16 +25,19 @@
 \BOOKMARK [1][-]{section.5.1}{Block ciphers of different lengths}{chapter.5}% 25
 \BOOKMARK [1][-]{section.5.2}{Example of a Block Cipher translated into a SAT problem}{chapter.5}% 26
 \BOOKMARK [1][-]{section.5.3}{Example of block cipher via SAT }{chapter.5}% 27
-\BOOKMARK [0][-]{chapter.6}{Translating DES to SAT}{}% 28
-\BOOKMARK [0][-]{chapter.7}{Software Applications}{}% 29
-\BOOKMARK [1][-]{section.7.1}{OKlibrary}{chapter.7}% 30
-\BOOKMARK [1][-]{section.7.2}{ LaTeX}{chapter.7}% 31
-\BOOKMARK [1][-]{section.7.3}{Github}{chapter.7}% 32
-\BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 33
-\BOOKMARK [1][-]{section.8.1}{Accomplishments and What has been learned}{chapter.8}% 34
-\BOOKMARK [1][-]{section.8.2}{Time line}{chapter.8}% 35
-\BOOKMARK [2][-]{subsection.8.2.1}{Reflection of Time line}{section.8.2}% 36
-\BOOKMARK [1][-]{section.8.3}{Risk Analysis}{chapter.8}% 37
-\BOOKMARK [2][-]{subsection.8.3.1}{Review of Risk Analysis}{section.8.3}% 38
-\BOOKMARK [1][-]{section.8.4}{Further Work}{chapter.8}% 39
-\BOOKMARK [1][-]{section.8.5}{Conclusion}{chapter.8}% 40
+\BOOKMARK [1][-]{section.5.4}{Characteristics and properties of block ciphers}{chapter.5}% 28
+\BOOKMARK [2][-]{subsection.5.4.1}{Security of block ciphers}{section.5.4}% 29
+\BOOKMARK [2][-]{subsection.5.4.2}{Strong property of keys}{section.5.4}% 30
+\BOOKMARK [0][-]{chapter.6}{Translating DES to SAT}{}% 31
+\BOOKMARK [0][-]{chapter.7}{Software Applications}{}% 32
+\BOOKMARK [1][-]{section.7.1}{OKlibrary}{chapter.7}% 33
+\BOOKMARK [1][-]{section.7.2}{ LaTeX}{chapter.7}% 34
+\BOOKMARK [1][-]{section.7.3}{Github}{chapter.7}% 35
+\BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 36
+\BOOKMARK [1][-]{section.8.1}{Accomplishments and What has been learned}{chapter.8}% 37
+\BOOKMARK [1][-]{section.8.2}{Time line}{chapter.8}% 38
+\BOOKMARK [2][-]{subsection.8.2.1}{Reflection of Time line}{section.8.2}% 39
+\BOOKMARK [1][-]{section.8.3}{Risk Analysis}{chapter.8}% 40
+\BOOKMARK [2][-]{subsection.8.3.1}{Review of Risk Analysis}{section.8.3}% 41
+\BOOKMARK [1][-]{section.8.4}{Further Work}{chapter.8}% 42
+\BOOKMARK [1][-]{section.8.5}{Conclusion}{chapter.8}% 43

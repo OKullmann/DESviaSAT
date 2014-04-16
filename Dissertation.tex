@@ -674,8 +674,10 @@ The CNF clauses for the table constructed with an output would be:
 This means we have constructed a CNF out of using the values from P, K, C via the use of SAT.
 
 
+\section{Characteristics and properties of block ciphers}
+In this section we will look at the unique characteristics of block ciphers in terms of their security. The security aspect of block ciphers will also mean an in depth look at the characteristics of the keys which are used in the encryption. 
 
-
+\subsection{Security of block ciphers}
 The security of an encryption is determined by its key. Specifically the more key iterations a encryption has, the more secure/ harder it will be to break. A encryption with only one key will encrypt a plain text once. This is less effective in terms of security compared to a plain text that uses more keys. This is due to the fact that the randomness of the cipher text increases.
 
 \emph{Weak keys} in cryptography are keys which when used with a plain text will result in a cipher text with specific properties. These properties are unfavourable as it leads to a security problem. It should be noted that weak keys are rare due to the amount of keys available to encrypt a message, but do raise a major flaw in the security of a message. As a result it is often attempted to reduce the chance of obtaining a weak key. An example of a weak key would be if all the bits are all 1's, 0's or alternating 0's and 1's. The consequence of using a weak key to encrypt a block cipher and then encrypt the result with the same weak key, we will obtain the original block cipher.
@@ -689,13 +691,12 @@ The security of an encryption is determined by its key. Specifically the more ke
 
 
 
-
-There are "basic properties" given with keys to show that keys will always map to different outputs. In other words, if we are given two different keys, there exists a mapping for each key such that there will always be a different output (never both map to the same value). In other words, encryption key 1 (E$_{K1}$) is not equal to encryption key 2 (E$_{K2}$) in terms of mapping to the same cipher text (C).
+\subsection{Strong property of keys}
+There are basic properties given with keys to show that keys will always map to different outputs. Therefore if we are given two different keys, there exists a mapping for each key such that there will always be a different output (never both mapping to the same output). In other words, encryption key 1 (E$_{K1}$) is not equal to encryption key 2 (E$_{K2}$) in terms of mapping to the same cipher text (C). We will refer to this as a \emph{strong property}.  
 \begin{displaymath}
 E_{K1} \neq E_{K2} \rightarrow C
 \end{displaymath}
 An example of this would be given a plain text of 1 bit in length that is assigned to binary value 1 and two keys each one bit in length where E$_{K1}$ is assigned to 0 and another key E$_{K2}$ is assigned 1. In the example given below, we are looking for two cipher texts not to be equal.
-
 A toy example of this strong property would be:
 
 \begin{figure}[H]
@@ -724,7 +725,7 @@ P & E$_{K1}$ & E$_{K2}$ & P $\oplus$ E$_{K1}$ & P $\oplus$ E$_{K2}$\\ \hline
 \end{figure}
 
 The output of P $\oplus$ E$_{K1}$ is equivalent to saying it is cipher text 1 (C$_1$) and P $\oplus$ E$_{K2}$ is equivalent to cipher text 2 (C$_2$). Therefore we have proven that the output C$_1$ $\neq$ C$_2$.
- As seen in figure \ref{tab:XOR function} two different keys do not map to the same output. As a result this is a "Strong property" of keys which is desirable when looking at the security of a block cipher.
+ As seen in figure 5.2, two different keys do not map to the same output. As a result this is a "Strong property" of keys which is desirable when looking at the security of a block cipher.
 
  A \emph{Duplicate key} is a key with the same identical property of another key. This property is deriving the same Cipher text. Given two keys and using the domain Plain text \{P\}* which denotes the set of all possible Plain texts, the key will map \{P\}* to the set of all possible Cipher texts \{C\}*.
  \begin{displaymath}
@@ -766,7 +767,7 @@ P & K$_2$ & C$_{K2}$ \\ \hline
 \end{table}
 \end{figure}
 
-By our previous hypothesis, if we take each row from table \ref{tab:C1} and table \ref{tab:C2} then we can evaluate them as equal. Therefore K$_1$ and K$_2$ map the same Plain text to the Cipher text.
+By our previous hypothesis, if we take each row from table 5.1 and table 5.2 then we can evaluate them as equal. Therefore K$_1$ and K$_2$ map the same Plain text to the Cipher text.
 
 \begin{displaymath}
 C_{K1}(P) = C_{K2}(P)
