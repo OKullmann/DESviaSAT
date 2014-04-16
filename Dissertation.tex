@@ -584,9 +584,19 @@ Using the basic binary functor \emph{disjunction} (see Figure 4.2.3) we can now 
 
 \chapter{Direct translations of (toy) block ciphers to SAT}
 \label{cha:dirtrans}
+In this section we will look at how to derive a CNF that represents a given block cipher. Additionally we will look at topics that are of concern when deriving a CNF formula, such as length and security
 
+\section{Block ciphers of different lengths}
+As previously declared (see \ref{cha:BCipher}), block ciphers length of a message will be equal to the cipher text that is output using the formula 
+\begin{displaymath}
+ M = C = \{0,1\}^{n}
+\end{displaymath}
+However if such a case was to arise where the plain text is smaller or greater that the cipher text then this will cause complications. Therefore there are different properties and issues that must be looked at regarding the different lengths. First we look at where the plain text is greater than the cipher text (P $\textless$ C). This essentially means that our input is grater than our output. Practically this does not make sense as there will be a lose of data within the cipher text.  However an alternative view would be that error checking was in the plain text , so therefore they were parity bits. In this regard this arbitrary block cipher would be acceptable.
+
+An alternative block cipher encryption would be if the plain text contains less bits than the cipher text (P $\textgreater$ C). This will essentially mean that random useless data is added onto the cipher text. As a result of this, in theory, the cipher text is securer in terms of plain text attacking. This is due to the user having to use up more time to try and find meaning to the random useless bits therefore taking more time to crack.
+
+\section{Example of a Block Cipher translated into a SAT problem}
 For combining the two areas, we will consider block ciphers which we will call b. As stated before, we have the three elements of P, C and K. We then must consider the main processes of these elements which is to encrypt and decrypt using the formulas
-
 \begin{displaymath}
 encrypt_{b} (P,K) = C
 \end{displaymath}
@@ -665,10 +675,6 @@ This means we have constructed a CNF out of using the values from P, K, C via th
 
 
 
-
-Block ciphers can encrypt messages of arbitrary length. There are different properties and issues that must be looked at regarding the different lengths. First we look at where the plain text is greater than the cipher text (P $\textless$ C). This essentially means that our input is grater than our output. Practically this does not make sense as there will be a lose of data within the cipher text. However an alternative view would be that error checking was in the plain text , so therefore they were parity bits. In this regard this arbitrary block cipher would be acceptable.
-
-An alternative block cipher encryption would be if the plain text contains less bits than the cipher text (P $\textgreater$ C). This will essentially mean that random useless data is added onto the cipher text. As a result of this, in theory, the cipher text is securer in terms of plain text attacking. This is due to the user having to use up more time to try and find meaning to the random useless bits therefore taking more time to crack.
 
 The security of an encryption is determined by its key. Specifically the more key iterations a encryption has, the more secure/ harder it will be to break. A encryption with only one key will encrypt a plain text once. This is less effective in terms of security compared to a plain text that uses more keys. This is due to the fact that the randomness of the cipher text increases.
 
