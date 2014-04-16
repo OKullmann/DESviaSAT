@@ -134,13 +134,13 @@ We use the following \textbf{formal notation}:
 \begin{description}
 \item[M] Message
 \item[P] Plain text
+\item[C] Cipher text
+\item[K] Key
+\item[E] Encryption algorithm
+\item[D] Decryption algorithm
+\item[E$_{K}$] Encryption Key
+\item[D$_{K}$] Decryption Key
 \end{description}
-C = Cipher text
-K = Key
-E = Encryption algorithm
-D = Decryption algorithm
-E$_{K}$ = Encryption Key
-D$_{K}$ = Decryption Key
 
 \section{General Cryptography}
 \label{sec:GenCrypt}
@@ -430,7 +430,7 @@ $p$ & $\neg p$\\ \hline
 \caption{Negation.}
 \end{figure}
 
-As seen in Figure \ref{tab:negation} the $\neg p$ will always have a value that is opposite $p$.
+As seen in Figure 4.1 the $\neg p$ will always have a value that is opposite $p$.
 The logical \emph{functors} each have a unique output if called upon using a set of Bool elements.
 \begin{center}
 \begin{tabular}{|c|c||c|c|c|c|c|}
