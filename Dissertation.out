@@ -22,7 +22,7 @@
 \BOOKMARK [2][-]{subsection.4.2.1}{Converting CNF to clause set logic}{section.4.2}% 22
 \BOOKMARK [2][-]{subsection.4.2.2}{Example of a formula being satisfiable}{section.4.2}% 23
 \BOOKMARK [0][-]{chapter.5}{Direct translations of \(toy\) block ciphers to SAT}{}% 24
-\BOOKMARK [1][-]{section.5.1}{Example of DES via SAT }{chapter.5}% 25
+\BOOKMARK [1][-]{section.5.1}{Example of block cipher via SAT }{chapter.5}% 25
 \BOOKMARK [0][-]{chapter.6}{Translating DES to SAT}{}% 26
 \BOOKMARK [0][-]{chapter.7}{Software Applications}{}% 27
 \BOOKMARK [1][-]{section.7.1}{OKlibrary}{chapter.7}% 28

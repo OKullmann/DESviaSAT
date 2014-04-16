@@ -594,16 +594,16 @@ encrypt_{b} (P,K) = C
 decrypt_{b} (C, K) = P
 \end{displaymath}
 From this formula notation we must consider the scenario were one is given two of the three parts. For example if we have C and P we must thus determine K. This is where we can apply SAT to make a logical connection from the binary values that are given within DES and form a relation via Boolean functions to determine a CNF.
-As stated before in chapter 4 Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the DES operation would be
+As stated before in chapter \ref{cha:prelim} Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the block cipher operation would be
 
 \begin{displaymath}
-des(P,K,C)
+BlockCipher(P,K,C)
 \end{displaymath}
 This relation holds if and only if encrypt$_{b}$ (P,K) = C.
 As a result of this relation, we have a satisfiability problem.
 
-\section{Example of DES via SAT }
-If we were to consider a DES that had one key bits for both the key, Plain text and Cipher text then it is easy to understand the fundamentals of how the SAT computation can be done in a bigger picture. If we start with a basic example where each variable has a length of 1, then:
+\section{Example of block cipher via SAT }
+If we were to consider a block cipher that had one key bits for both the key, Plain text and Cipher text then it is easy to understand the fundamentals of how the SAT computation can be done in a bigger picture. If we start with a basic example where each variable has a length of 1, then:
 
 \begin{displaymath}
 N: (P, C) = 1
@@ -613,7 +613,7 @@ Key = 1
 \end{displaymath}
 Then if we were then to encrypt a message using the formula as stated before then
 \begin{displaymath}
-DES: \{0,1\}^{1} \times \{0,1\}^1 \rightarrow \{0,1\}^1
+BlockCipher: \{0,1\}^{1} \times \{0,1\}^1 \rightarrow \{0,1\}^1
 \end{displaymath}
 This can be shown via a truth table to show the Boolean output for if the three variables are all true. With this truth table we have 2 variables. This means our output in the cipher will be 2$^{n}$ which in this case is 4.
 
@@ -658,7 +658,6 @@ Plain text & Key & Cipher & Output\\ \hline
 \end{center}
 We find the output by taking each variable {P,K,C} = {P$_{1}$, K$_{1}$, C$_{1}$}. If we take the first row we can see the variables are {0,0,0}. We then use this and look at the previous table to see if the same three values appear. The set {0,0,0} appears on the first line, so therefore the output will be one. However if the set does not appear then we represent the output as a 0. Once the table is completed one can start to construct CNF statements.
 The CNF clauses for the table constructed with an output would be:
-
 \begin{displaymath}
 (P_{1} \lor K_{1} \lor \neg C_{1}) \land (\neg P_{1} \lor K_{1} \lor C_{1}) \land (P_{1} \lor \neg K_{1} \lor \neg C_{1}) \land (\neg P_{1} \lor \neg K_{1} \lor C_{1})
 \end{displaymath}
