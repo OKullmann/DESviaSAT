@@ -165,8 +165,10 @@ Symmetric-key encryption schemes provide secure communication for a pair of comm
 \textbf{RSA}
 RSA is named after its inventors Ron Rivest, Adi Shamir and Len Adleman. RSA was the first public-key cryptosystem and is still one of the most important \cite{DBLP:series/isc/DelfsK07}. The most important thing to note about RSA is that it is an asymmetric encryption method and so therefore has a public key and a private key. Both keys however are mathematically linked. The public key is known to everyone and is used to decrypt messages. On the other hand the private key is used to encrypt messages. The general idea behind the encryption of RSA is that the factors of the two generated messages cannot be recovered from $n$. RSA will generate two different random numbers which are odd prime numbers. The product is then taken from these values. A new value (e) is then introduced which is a prime number relative to $n$. The pair (n, e) is then the public key. The decryption is then computed with ne $\equiv$ 1 mod (n). (n,d) is then used as the private key. This is just one of the other possible methods of encryption available.
 
+
+
 \section{Block Ciphers}
-\label{cha:BCipher}
+\label{sec:BCipher}
 
 A block cipher is defined as a symmetric-key encryption scheme with
 \begin{displaymath}
@@ -585,10 +587,13 @@ Using the basic binary functor \emph{disjunction} (see Figure 4.2.3) we can now 
 
 \chapter{Direct translations of (toy) block ciphers to SAT}
 \label{cha:dirtrans}
+
 In this section we will look at how to derive a CNF that represents a given block cipher. Additionally we will look at topics that are of concern when deriving a CNF formula, such as length and security
 
 \section{Block ciphers of different lengths}
-As previously declared (see \ref{cha:BCipher}), block ciphers length of a message will be equal to the cipher text that is output using the formula 
+\label{sec:Blockciphersdiff}
+
+As previously declared (see Section \ref{sec:BCipher}), block ciphers length of a message will be equal to the cipher text that is output using the formula 
 \begin{displaymath}
  M = C = \{0,1\}^{n}
 \end{displaymath}
