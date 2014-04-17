@@ -680,7 +680,17 @@ In this section we will look at the unique characteristics of block ciphers in t
 \subsection{Security of block ciphers}
 The security of an encryption is determined by its key. Specifically the more key iterations a encryption has, the more secure/ harder it will be to break. A encryption with only one key will encrypt a plain text once. This is less effective in terms of security compared to a plain text that uses more keys. This is due to the fact that the randomness of the cipher text increases.
 
-\emph{Weak keys} in cryptography are keys which when used with a plain text will result in a cipher text with specific properties. These properties are unfavourable as it leads to a security problem. It should be noted that weak keys are rare due to the amount of keys available to encrypt a message, but do raise a major flaw in the security of a message. As a result it is often attempted to reduce the chance of obtaining a weak key. An example of a weak key would be if all the bits are all 1's, 0's or alternating 0's and 1's. The consequence of using a weak key to encrypt a block cipher and then encrypt the result with the same weak key, we will obtain the original block cipher.
+\emph{Weak keys} in cryptography are keys which when used with a plain text will result in a cipher text with specific properties. 
+\begin{displaymath}
+P = E_{K}(E_{K}(P))
+\end{displaymath}
+An example of a weak key would be if all the bits are all 1's, 0's or alternating 0's and 1's. The consequence of using a weak key to encrypt a block cipher and then encrypt the result with the same weak key, we will obtain the original block cipher.These properties are unfavourable as it leads to a security problem. It should be noted that weak keys are rare due to the amount of keys available to encrypt a message, but do raise a major flaw in the security of a message. As a result it is often attempted to reduce the chance of obtaining a weak key.
+
+If it so happens that no weak key exists, we may want to know if a cipher is closed. By this we mean that for any given Plain text (P) and for any given keys (K1) and (K2) it is possible to obtain a third key (K3) such that encrypting the plain text (P) with both (K1) and (K2) is equivalent encrypting the plain text once with just the third key (K3). As a result we are looking for whether
+\begin{displaymath}
+E_{K2}(E_{K1})(P) = E_{K}(P)
+\end{displaymath} 
+is suitable for a given key K. Therefore we may want to locate a key K that is independent from the pain text (P) and only dependant on the other two keys (K1) and (K2) 
 
 
 
@@ -777,7 +787,7 @@ C_{K1}(P) = C_{K2}(P)
 \chapter{Translating DES to SAT}
 \label{cha:AppDESSAT}
 
-
+\chapter{Literature review of `Logical Cryptanalysis as a SAT Problem'}
 
 
 

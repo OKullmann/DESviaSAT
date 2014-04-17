@@ -30,15 +30,16 @@
 \BOOKMARK [2][-]{subsection.5.4.1}{Security of block ciphers}{section.5.4}% 30
 \BOOKMARK [2][-]{subsection.5.4.2}{Strong property of keys}{section.5.4}% 31
 \BOOKMARK [0][-]{chapter.6}{Translating DES to SAT}{}% 32
-\BOOKMARK [0][-]{chapter.7}{Software Applications}{}% 33
-\BOOKMARK [1][-]{section.7.1}{OKlibrary}{chapter.7}% 34
-\BOOKMARK [1][-]{section.7.2}{ LaTeX}{chapter.7}% 35
-\BOOKMARK [1][-]{section.7.3}{Github}{chapter.7}% 36
-\BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 37
-\BOOKMARK [1][-]{section.8.1}{Accomplishments and What has been learned}{chapter.8}% 38
-\BOOKMARK [1][-]{section.8.2}{Time line}{chapter.8}% 39
-\BOOKMARK [2][-]{subsection.8.2.1}{Reflection of Time line}{section.8.2}% 40
-\BOOKMARK [1][-]{section.8.3}{Risk Analysis}{chapter.8}% 41
-\BOOKMARK [2][-]{subsection.8.3.1}{Review of Risk Analysis}{section.8.3}% 42
-\BOOKMARK [1][-]{section.8.4}{Further Work}{chapter.8}% 43
-\BOOKMARK [1][-]{section.8.5}{Conclusion}{chapter.8}% 44
+\BOOKMARK [0][-]{chapter.7}{Literature review of `Logical Cryptanalysis as a SAT Problem'}{}% 33
+\BOOKMARK [0][-]{chapter.8}{Software Applications}{}% 34
+\BOOKMARK [1][-]{section.8.1}{OKlibrary}{chapter.8}% 35
+\BOOKMARK [1][-]{section.8.2}{ LaTeX}{chapter.8}% 36
+\BOOKMARK [1][-]{section.8.3}{Github}{chapter.8}% 37
+\BOOKMARK [0][-]{chapter.9}{Evaluation}{}% 38
+\BOOKMARK [1][-]{section.9.1}{Accomplishments and What has been learned}{chapter.9}% 39
+\BOOKMARK [1][-]{section.9.2}{Time line}{chapter.9}% 40
+\BOOKMARK [2][-]{subsection.9.2.1}{Reflection of Time line}{section.9.2}% 41
+\BOOKMARK [1][-]{section.9.3}{Risk Analysis}{chapter.9}% 42
+\BOOKMARK [2][-]{subsection.9.3.1}{Review of Risk Analysis}{section.9.3}% 43
+\BOOKMARK [1][-]{section.9.4}{Further Work}{chapter.9}% 44
+\BOOKMARK [1][-]{section.9.5}{Conclusion}{chapter.9}% 45
