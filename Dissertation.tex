@@ -68,7 +68,7 @@ Github is a file sharing hosting service which allows one or more person to work
 There have been some published papers which are similar to the topic area, but not many. A basic understanding and framework can be taken from these papers to develop a well designed structure to the projects work.
 
 The interaction between Propositional Satisfiability and Applications in Cryptography and Ramsey Problems \cite{Gwynne2010Interaction} is a recently published thesis that looks at a different encryption standard called Advanced Encryption Standard (AES). The paper first of all outlines and declares what Boolean functions are and SAT. The thesis paper goes into depth of how the AES works by giving a very detailed explanation along with examples of how it is runs. Then there is a translation of AES into SAT with the use of Conjunctive Normal Form (CNF). The framework within the thesis provided a translation of satisfiability theorems to be used in encryption. A lot of the work talks about breaking AES which is a successor of DES. However techniques used to break AES can be adopted and will be closely linked to DES.
-Other work such as Logical Cryptanalysis as a SAT Problem \cite{Fabio2000LogicalSAT} outlines DES which gives a great framework to use, covering everything step by step from the initial permutation to the generation of keys.
+Other work such as Logical Cryptanalysis as a SAT Problem \cite{Fabio2000LogicalSAT} outlines DES which gives a great framework to use, covering everything step by step from the initial permutation to the generation of keys. A detailed analysis of this paper has been given in chapter \ref{cha:LitReview}. This gives one an in depth knowledge about some previous frameworks that have been developed and background knowledge about other cryptanalysis areas.   
 
 There are other cryptanalysis techniques which include differential cryptanalysis. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based up having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$.
 
@@ -78,7 +78,7 @@ There are other cryptanalysis techniques which include differential cryptanalysi
 \chapter{Background}
 \label{cha:AnBack}
 
-The analytical background will first describe the terminology used throughout this paper. This gives students that are new to the area of cryptology an understanding of what some of the words are defined as.
+The analytical background will first describe the terminology used throughout this paper. This gives readers that are new to the area of cryptology an understanding of what some of the words are defined as. Additionally a background of some of the fundamentals building blocks of encryption and logical mathematics are explained, such as block ciphers and sets. 
 
 
 \section{Terminology}
@@ -172,7 +172,7 @@ A block cipher is defined as a symmetric-key encryption scheme with
 \begin{displaymath}
  M = C = \{0,1\}^{n}
 \end{displaymath}
- $n$ is the block length of the cipher \cite{DBLP:series/isc/DelfsK07}. Block ciphers are used to encrypt blocks of bits of a fixed length to a new different output \cite{DBLP:books/sp/Buchmann02}. For example if the input length of a block cipher is 8 bits, then the output block cipher will also be 8 bits long. A block cipher is referred to as a cryptosystem if its plain text and cipher text are of the same length.A block cipher will map an original Plain text into a cipher text with the use of permutation. Block ciphers are closely related to binary arithmetic in how to calculate the new values and current values of which will be shown later.
+$n$ is the block length of the cipher \cite{DBLP:series/isc/DelfsK07}. Block ciphers are used to encrypt blocks of bits of a fixed length to a new different output \cite{DBLP:books/sp/Buchmann02}. For example if the input length of a block cipher is 8 bits, then the output block cipher will also be 8 bits long. A block cipher is referred to as a cryptosystem if its plain text and cipher text are of the same length.A block cipher will map an original Plain text into a cipher text with the use of permutation. Block ciphers are closely related to binary arithmetic in how to calculate the new values and current values of which will be shown later.
 A block cipher is made up of two algorithms which we will call E and D (Encryption and decryption algorithm). Both of these algorithms take in a key called K. Given a Plain text (PT) the encryption will take in a key and map both these inputs to an output. This output is the Cipher text (CT). This can be seen in Figure \ref*{fig:2.2.1}
 
 
@@ -244,6 +244,7 @@ DES: \{0,1\}^{64} \times \{0,1\}^{56} \rightarrow \{0,1\}^{64}
 DES is constructed by taking in a 64 bit Plain text, mapping it to an encryption key which is 56 bits long, which will give a 64 bit Cipher text.
 
 \subsection{Feistel Network}
+\label{FeistelNet}
 DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions (see \ref{Figure:4.2.3}) and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
 \begin{displaymath}
 FeistelNetwork: \{0,1\}^n \rightarrow \{0,1\}^n
@@ -693,8 +694,6 @@ E_{K2}(E_{K1})(P) = E_{K}(P)
 is suitable for a given key K. Therefore we may want to locate a key K that is independent from the pain text (P) and only dependant on the other two keys (K1) and (K2). In the case of a closed cipher we cannot improve the security of the cipher by encrypting something twice with different keys. A different aspect of weak keys is that the cipher is more vulnerable to a brute force attack as discussed in section \ref{cha:RWork}. This is a result of two keys having the same out put thus reducing the search space for a brute force attack to half of the key bits which for DES would be 26 instead of 56. 
 
 
-Even worse, the cipher is vulnerable to particular attacks that make it possible to reduce the search space of brute force attacks to half of the key bits [26]. Proving that a cipher is closed is equivalent to proving that the encryption transformations form a group. For instance, it has been proved with a huge number of cyclic experiments that DES is not a group [12].
-
 
 
 
@@ -789,7 +788,7 @@ C_{K1}(P) = C_{K2}(P)
 
 \chapter{Literature review}
 \label{cha:LitReview}
-A literature review is written by someone to view the critical points of current knowledge, methodology and theoretical findings in a specific area of interest. Literature reviews are taken from a specific view point and so therefore need justifications when arguing the points of the author. In this case it will be to review the paper titled `Logical Cryptanalysis as a SAT Problem' by Fabio Massacci et al \cite{Fabio2000LogicalSAT}. The review will consist of analysing the findings in a condensed and summarised fashion. Additionally, a look into the relevance of the paper will be critiqued along with innovations in research that has occurred since the paper has been published. A literature review is of important relevance to this paper as there are some links made between this paper and paper by Massacci. These links are cited where needed in the paper between the link of block ciphers and DES in terms of their properties.  
+A literature review is written by someone to view the critical points of current knowledge, methodology and theoretical findings in a specific area of interest. Literature reviews are taken from a specific view point need justifications when arguing the points of the author. In this case, it will be a literature review of the paper titled `Logical Cryptanalysis as a SAT Problem' by Fabio Massacci et al \cite{Fabio2000LogicalSAT}. The review will consist of analysing the findings in a condensed and summarised fashion. Additionally, a look into the relevance of the paper will be critiqued along with innovations in research that has occurred since the paper has been published. A literature review is of important relevance to this paper as there are some links made between this paper and paper by Massacci. These links are cited where needed in the paper between the link of block ciphers and DES in terms of their properties.  
 
 
 
@@ -797,11 +796,13 @@ A literature review is written by someone to view the critical points of current
 \label{sec:AnalysisOF}
 %review the paper and gather meaningful data to discuss. Additiaonlly discuss what was not talked about (universal backdoor key)
 
+\section{Relevance of the paper}
+\label{sec:RelOfPaper}
+%outline the relevance of the paper in the subject area and how it has opened up ways of attacking DES. What work has been expanded because of this paper.
 
-
-
-
-
+\section{Progress since publication}
+\label{sec:ProgressSP}
+%What has happened in the subject area since the paper has been published? What is the relevance of that work? This section should flow straight from the previous section as it will have some links 
 
 
 
