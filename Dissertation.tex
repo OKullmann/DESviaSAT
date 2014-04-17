@@ -690,10 +690,10 @@ If it so happens that no weak key exists, we may want to know if a cipher is clo
 \begin{displaymath}
 E_{K2}(E_{K1})(P) = E_{K}(P)
 \end{displaymath} 
-is suitable for a given key K. Therefore we may want to locate a key K that is independent from the pain text (P) and only dependant on the other two keys (K1) and (K2) 
+is suitable for a given key K. Therefore we may want to locate a key K that is independent from the pain text (P) and only dependant on the other two keys (K1) and (K2). In the case of a closed cipher we cannot improve the security of the cipher by encrypting something twice with different keys. A different aspect of weak keys is that the cipher is more vulnerable to a brute force attack as discussed in section \ref{cha:RWork}. This is a result of two keys having the same out put thus reducing the search space for a brute force attack to half of the key bits which for DES would be 26 instead of 56. 
 
 
-
+Even worse, the cipher is vulnerable to particular attacks that make it possible to reduce the search space of brute force attacks to half of the key bits [26]. Proving that a cipher is closed is equivalent to proving that the encryption transformations form a group. For instance, it has been proved with a huge number of cyclic experiments that DES is not a group [12].
 
 
 
@@ -787,7 +787,26 @@ C_{K1}(P) = C_{K2}(P)
 \chapter{Translating DES to SAT}
 \label{cha:AppDESSAT}
 
-\chapter{Literature review of `Logical Cryptanalysis as a SAT Problem'}
+\chapter{Literature review}
+\label{cha:LitReview}
+A literature review is written by someone to view the critical points of current knowledge, methodology and theoretical findings in a specific area of interest. Literature reviews are taken from a specific view point and so therefore need justifications when arguing the points of the author. In this case it will be to review the paper titled `Logical Cryptanalysis as a SAT Problem' by Fabio Massacci et al \cite{Fabio2000LogicalSAT}. The review will consist of analysing the findings in a condensed and summarised fashion. Additionally, a look into the relevance of the paper will be critiqued along with innovations in research that has occurred since the paper has been published. A literature review is of important relevance to this paper as there are some links made between this paper and paper by Massacci. These links are cited where needed in the paper between the link of block ciphers and DES in terms of their properties.  
+
+
+
+\section{Analysis of findings}
+\label{sec:AnalysisOF}
+%review the paper and gather meaningful data to discuss. Additiaonlly discuss what was not talked about (universal backdoor key)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
