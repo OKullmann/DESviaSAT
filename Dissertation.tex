@@ -601,24 +601,40 @@ However if such a case was to arise where the plain text is smaller or greater t
 
 An alternative block cipher encryption would be if the plain text contains less bits than the cipher text (P $\textgreater$ C). This will essentially mean that random useless data is added onto the cipher text. As a result of this, in theory, the cipher text is securer in terms of plain text attacking. This is due to the user having to use up more time to try and find meaning to the random useless bits therefore taking more time to crack.
 
-\section{Example of a Block Cipher translated into a SAT problem}
-For combining the two areas, we will consider block ciphers which we will call b. As stated before, we have the three elements of P, C and K. We then must consider the main processes of these elements which is to encrypt and decrypt using the formulas
-\begin{displaymath}
-encrypt_{b} (P,K) = C
-\end{displaymath}
-\begin{displaymath}
-decrypt_{b} (C, K) = P
-\end{displaymath}
-From this formula notation we must consider the scenario were one is given two of the three parts. For example if we have C and P we must thus determine K. This is where we can apply SAT to make a logical connection from the binary values that are given within DES and form a relation via Boolean functions to determine a CNF.
-As stated before in chapter \ref{cha:prelim} Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the block cipher operation would be
+
+\section{Interpreting a block cipher as a relation}
+\label{sec:ExampleBlock}
 
 \begin{displaymath}
-BlockCipher(P,K,C)
+  b: \{0,1\}^n \times \{0,1\}^k \rightarrow \{0,1\}^n
+\end{displaymath}
+XXX
+
+For combining the two areas, we will consider block ciphers which we will call $b$. As stated before, we have the three elements of $P$, $C$ and $K$. We then must consider the main processes of these elements which is to encrypt and decrypt using the formulas
+\begin{displaymath}
+  b(P,K) = C.
+\end{displaymath}
+XXX
+\begin{displaymath}
+  b^{-1}(C, K) = P
+\end{displaymath}
+We now must consider the scenario were one is given two of the three parts. For example if we have C and P we must thus determine K. This is where we can apply SAT to make a logical connection from the binary values that are given within DES and form a relation via Boolean functions to determine a CNF.
+As stated before in Chapter \ref{cha:prelim}, Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the block cipher operation would be
+\begin{displaymath}
+  b(P,K,C).
 \end{displaymath}
 This relation holds if and only if encrypt$_{b}$ (P,K) = C.
-As a result of this relation, we have a satisfiability problem.
+As a result of this relation, we have a satisfiability problem. XXX
+\begin{displaymath}
+  b:  \{0,1\}^n \times \{0,1\}^k \times \{0,1\}^n \rightarrow \{0,1\}
+\end{displaymath}
+XXX $b(P,K,C) = 1 \Leftrightarrow b(P,K) = C$
 
-\section{Example of block cipher via SAT }
+
+
+\section{Example of block cipher via SAT}
+\label{sec:examplebcsat}
+
 If we were to consider a block cipher that had one key bits for both the key, Plain text and Cipher text then it is easy to understand the fundamentals of how the SAT computation can be done in a bigger picture. If we start with a basic example where each variable has a length of 1, then:
 
 \begin{displaymath}
